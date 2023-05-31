@@ -6,7 +6,27 @@
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
-- test
+  [compile, test, deploy]
+
+compile:
+  stage: compile
+  script:
+    - echo "compiling"
+
+test:
+  stage: test
+  script:
+    - echo "Tesing"
+
+
+deploy_VM:
+  stage: deploy
+  script:
+    - echo "Deploying."
+  environment: 
+    name: VM
+    url: 146.169.43.142
+
 sast:
   stage: test
 include:
