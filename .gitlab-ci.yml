@@ -27,6 +27,11 @@ deploy_VM:
     name: VM
     url: 146.169.43.142
 
+deploy_heroku:
+  stage: deploy
+  script: 
+    - dpl --provider=heroku --app=drp26 --api-key=8704aac6-481f-41d0-bd73-7328268e327a
+
 sast:
   stage: test
 include:
