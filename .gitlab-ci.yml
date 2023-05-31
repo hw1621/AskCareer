@@ -23,6 +23,9 @@ deploy_VM:
   stage: deploy
   script:
     - echo "Deploying."
+    - export FLASK_APP=app
+    - flask run
+
   environment: 
     name: VM
     url: 146.169.43.142
