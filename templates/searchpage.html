@@ -5,27 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Searching page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="displaypage.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/searchpage.css') }}" />
   </head>
   <body>
-    <div class="heading">
-      <div id="title">Based on your job description, we found the following people who might be able to help you...</div>
-      <div id="back">
-        <button onclick="window.location.href='searchpage.html'" type="button" class="btn btn-secondary">back</button>
-      </div>
-    </div>
-    <div>
-      <a href="">
-        <div class="profile-thumb">
-          <div class="profile-image"></div>
-          <div class="profile-info">
-            <div id="name">Ben</div>
-            <div>Currently take an intership at Google</div>
-          </div>
+    <h1>Welcome to our internship application platform</h1>
+    <form>
+      <div class="row g-3" id="jobtitle-row">
+        <div class="col">
+          <input id="job-title" name="job-title" required type="text" class="form-control" placeholder="Job title" aria-label="Job title">
         </div>
-      </a>
-    </div>
-    <p>None of these meet your requirment? click here to <a class="classic-link" href="redomlink.com">report</a></p>
+        <div class="col">
+          <input id="company" name="company" required type="text" class="form-control" placeholder="Company" aria-label="Company">
+        </div>
+      </div>
+      <div class="input-group" id="job-description">
+        <textarea id="jd" name="jd" required class="form-control" placeholder="Please enter your job description." aria-label="With textarea"></textarea>
+      </div>
+      <div class="submit-row">
+        <button id="form-submit" onclick="window.location.href='/suggestions'" name="form-submit" type="submit" class="btn btn-light">Get connected</button>
+      </div>
+    </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
