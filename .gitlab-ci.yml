@@ -16,22 +16,12 @@ compile:
 test:
   stage: test
   script:
-    - echo "Tesing"
-
-
-deploy_VM:
-  stage: deploy
-  script:
-    - touch
-    - echo "Deploying."
-    - export FLASK_APP=app
-    - flask run | logs.txt &
-
-  environment: 
-    name: VM
-    url: 146.169.43.142
+    - echo "Testing"
+    - pip install -r requirements.txt
+    - python3 -m pytest
+    - echo "Test completed"
 
 deploy_heroku:
   stage: deploy
   script: 
-    - dpl --provider=heroku --app=drp26 --api-key=8704aac6-481f-41d0-bd73-7328268e327a
+    - dpl --provider=heroku --app=drp26 --api-key=$HEROKU_API_KEY
