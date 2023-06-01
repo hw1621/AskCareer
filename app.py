@@ -2,12 +2,15 @@ from flask import Flask, render_template, redirect, request
 
 app = Flask(__name__)
 
-@app.route('/')
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    args = request.args.to_dict()
-    if (args.get("job-title") is not None):
+    if request.method == 'POST':
+        form = request.form.to_dict()
+        print(form)
         return redirect("/suggestions")
     return render_template('searchpage.html')
+
 
 @app.route('/suggestions')
 def suggest():
