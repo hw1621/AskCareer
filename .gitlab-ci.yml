@@ -6,12 +6,12 @@
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
-  [compile, test, deploy]
+  [cleanup, test, deploy]
 
 compile:
-  stage: compile
+  stage: cleanup
   script:
-    - echo "compiling"
+    - fuser -k 5000/tcp || true
 
 test:
   stage: test
@@ -22,9 +22,10 @@ test:
 deploy_VM:
   stage: deploy
   script:
+    - touch
     - echo "Deploying."
     - export FLASK_APP=app
-    - flask run
+    - flask run | logs.txt &
 
   environment: 
     name: VM
