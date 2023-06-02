@@ -4,33 +4,36 @@
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/displaypage.css') }}" />
 {% endblock %}
 {% block body %}
-    <dialog>
+    <dialog class="profile-modal">
         <div class="dialog-content">
-            <div class="dialog-header">
-                <button type="button" class="btn-close" onclick="hideProfile()" aria-label="Close"></button>
-            </div>
             <div class="dialog-body">
-                <div id="profile-header">
-                    <div id="profile-name"></div>
-                    <div id="profile-email"></div>
-                    <button tabindex="1" autofocus onclick="clearProfile()">Chat!</button>
+                <div class="profile-header">
+                    <div class="profile-image"></div>
+                    <div class="profile-header-info">
+                        <div id="profile-name"></div>
+                        <div id="profile-email"></div>
+                        <div id="chat-button">
+                            <button type="button" class="btn btn-primary" tabindex="1" autofocus onclick="">Chat!</button>
+                        </div>
+                    </div>
                 </div>
                 <div id="profile-info"></div>
+            </div>
+            <div class="dialog-header">
+                <button type="button" class="btn-close" onclick="hideProfile()" aria-label="Close"></button>
             </div>
         </div>
         <script src="{{ url_for('static', filename="js/profileModal.js") }}"></script>
     </dialog>
     {% macro profile(user_info) -%}
-    <div onclick="showProfile('{{ user_info["uuid"] }}');">
-      <a href="#">
-        <div class="profile-thumb">
-          <div class="profile-image"></div>
-          <div class="profile-info">
-            <div id="name">{{ user_info["name"] }}</div>
-            <div>Currently taking an internship at Google</div>
-          </div>
-        </div>
-      </a>
+    <div>
+        <a class="profile-thumb" href="#" onclick="showProfile('{{ user_info["uuid"] }}');">
+      <div class="profile-image"></div>
+      <div class="profile-info">
+        <div id="name">{{ user_info["name"] }}</div>
+        <div>Currently taking an internship at Google</div>
+      </div>
+        </a>
     </div>
     {% endmacro -%}
     <div class="heading">
