@@ -17,7 +17,6 @@ function loadProfile(userId, _callback) {
     }).then(function writeData(data) {
         document.getElementById('profile-name').innerHTML = data['name'];
         document.getElementById('profile-email').innerHTML = data['email'];
-        document.getElementById('profile-info').innerHTML = JSON.stringify(data);
     }).catch(function makeError(error) {
         console.log(error);
     }).then(_callback);
