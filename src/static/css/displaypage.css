@@ -69,3 +69,9 @@ a:hover {
     display: flex;
     flex-direction: row;
 }
+
+.dialog-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}

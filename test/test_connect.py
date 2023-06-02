@@ -13,3 +13,19 @@ def client():
 def test_connect(client):
     rv = client.get('/')
     assert rv.status_code == 200
+
+
+def test_post_job_succeeds(client):
+    data = {
+        "job-title": "Software Engineer Intern",
+        "company": "Google",
+        "job-description": "I work here"
+    }
+    rv = client.post('/', json=data)
+    assert rv.status_code == 200
+
+
+def test_post_without_data_fails(client):
+    rv = client.post('/')
+    assert rv.status_code == 500
+
