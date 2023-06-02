@@ -19,9 +19,9 @@ def test_post_job_succeeds(client):
     data = {
         "job-title": "Software Engineer Intern",
         "company": "Google",
-        "job-description": "I work here"
+        "jd": "I work here"
     }
-    rv = client.post('/', json=data)
+    rv = client.post('/', data=data)
     assert rv.status_code == 200
 
 
