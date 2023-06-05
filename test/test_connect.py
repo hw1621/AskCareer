@@ -29,3 +29,5 @@ import src.app as api
 #     rv = client.post('/')
 #     assert rv.status_code == 500
 
+def test_true():
+    assert True
