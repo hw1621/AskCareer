@@ -40,9 +40,9 @@ def signin():
     backendURL = "https://drp26backend.herokuapp.com/signin"
     response = requests.post(backendURL, token)
     if response.json()["authenticated"]:
-        return redirect("https://drp26.herokuapp.com/signin", code=200)
+        return redirect("https://drp26.herokuapp.com/", code=200)
     else:
-        return redirect("https://drp26.herokuapp.com/signin", code=403)
+        return redirect("https://drp26.herokuapp.com/", code=403)
 
 
 
