@@ -1,11 +1,13 @@
+let profileModal = document.getElementById('profile-modal');
+
 function showProfile(userId) {
     loadProfile(userId, function () {
-        document.getElementById('profile-modal').showModal();
+        profileModal.style.display = "block";
     });
 }
 
 function hideProfile() {
-    document.getElementById('profile-modal').close();
+    profileModal.style.display = "none";
     clearProfile();
 }
 

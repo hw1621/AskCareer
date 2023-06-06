@@ -4,9 +4,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/displaypage.css') }}" />
 {% endblock %}
 {% block body %}
-    <dialog id="profile-modal">
+    <div id="profile-modal">
         <div class="dialog-content">
             <div class="dialog-body">
+                <div class="dialog-header">
+                    <button type="button" class="btn-close" onclick="hideProfile()" aria-label="Close"></button>
+                </div>
                 <div class="profile-header">
                     <div class="profile-image"></div>
                     <div class="profile-header-info">
@@ -14,7 +17,7 @@
                         <div>Currently taking an internship at Google</div>
                         <div id="profile-email"></div>
                         <div id="chat-button">
-                            <button type="button" class="btn btn-primary" tabindex="1" autofocus onclick="">Chat!</button>
+                            <button type="button" class="btn btn-primary" tabindex="1" autofocus onclick="openChatBox()">Chat!</button>
                         </div>
                     </div>
                 </div>
@@ -25,12 +28,9 @@
                     <div id="work-experience"></div>
                 </div>
             </div>
-            <div class="dialog-header">
-                <button type="button" class="btn-close" onclick="hideProfile()" aria-label="Close"></button>
-            </div>
         </div>
         <script src="{{ url_for('static', filename="js/profileModal.js") }}"></script>
-    </dialog>
+    </div>
     {% macro profile(user_info) -%}
     <div>
         <a class="profile-thumb" href="#" onclick="showProfile('{{ user_info["uuid"] }}');">

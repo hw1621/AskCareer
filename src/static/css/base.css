@@ -18,13 +18,18 @@ body {
     width: 25vw;
     height: 5vh;
     margin-right: 5vw;
-    color: black;
-    padding: 1vh 2vw;
+    z-index: 1000;
+    background-color: grey;
+    transition-duration: 200ms;
+}
 
+#chat-modal-btn {
+    width: 100%;
+    height: 5vh;
     background-color: lightgray;
 }
 
-#chat-modal:hover {
+#chat-modal-btn:hover {
     opacity: 80%;
 }
 
@@ -40,4 +45,33 @@ a:hover {
 .classic-link {
     text-decoration: underline;
     color: #e5c7ca;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.chat-collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .chat-collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.chat-content {
+  height: 100%;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.summary {
+
 }

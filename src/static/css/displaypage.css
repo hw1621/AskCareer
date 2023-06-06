@@ -58,19 +58,39 @@ p {
 #profile-modal {
     border-radius: 20px;
     border: none;
-    width: 60%;
-    max-height: 70vh;
-    overflow: scroll;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+
+.dialog-content {
+    background-color: #fefefe;
+    border: 1px solid #888;
+    margin: 10% auto;
+    margin-right: 40vw;
+    width: 40%; /* Could be more or less, depending on screen size */
+    max-height: 70vh;
+    position: static;
+    overflow: scroll;
+    border-radius: 20px;
+}
+
 .dialog-header {
-    margin-right: 1vw;
-    position: absolute;
-    right: 1vw;
-    top: 1em;
+    margin-right: 0.5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
 }
 .dialog-body {
-    padding: 2vh 1vw 5vh 0;
-    margin-left: 3vw;
+    padding: 2vh 1vw 5vh 1vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
 }
 
 .profile-header {

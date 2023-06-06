@@ -45,12 +45,16 @@
 </nav>
 {% block body %}{% endblock %}
 {% block javascripts %}{% endblock %}
-<a href="#">
-    <div id="chat-modal">
-        <i class="bi bi-chevron-double-up"></i>
-        <span>&nbsp;</span>
-        <span>Chat</span>
+<div id="chat-modal">
+        <button type="button" id="chat-modal-btn" class="chat-collapsible">
+            <i class="bi bi-chevron-double-up" id="chat-modal-updown-symbol"></i>
+            <span>&nbsp;</span>
+            <span>Chat</span>
+        </button>
+        <div class="chat-content">
+            <div class="summary">hello</div>
+        </div>
+        <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
     </div>
-</a>
 </body>
 </html>
