@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, make_response
+from flask import Flask, render_template, request, make_response, redirect
 import requests
 import json
 
 app = Flask(__name__)
 
+CLIENT_ID = '1067444981581-lmgjcqdqb7i9g17ai0fhdh6nind11ljo.apps.googleusercontent.com'
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -32,3 +33,19 @@ def index():
     response = make_response(render_template('searchpage.html'))
     response.headers['Cross-Origin-Opener-Policy'] = 'same-origin-allow-popups'
     return response
+
+@app.route('/signin', methods = ['POST'])
+def signin():
+    token = request.form.to_dict()['credential']
+    backendURL = "https://drp26backend.herokuapp.com/signin"
+    response = requests.post(backendURL, token)
+    if response.json()["authenticated"]:
+        return redirect("https://drp26.herokuapp.com/signedin", code=200)
+    else:
+        return redirect("https://drp26.herokuapp.com/signedin", code=403)
+
+
+
+
+
+
