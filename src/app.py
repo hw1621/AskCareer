@@ -20,8 +20,13 @@ def index():
             "https://drp26backend.herokuapp.com/recommend/get_users",
             params=form
         )
-        print(be_info.content)
         profiles = json.loads(be_info.text)['profiles']
-        print(profiles)
-        return render_template("displaypage.html", profiles=profiles)
+        # remove duplication while keeping order
+        seen = set()
+        profiles_dedup = []
+        for i in profiles:
+            if i['uuid'] not in seen:
+                seen.add(i['uuid'])
+                profiles_dedup.append(i)
+        return render_template("displaypage.html", profiles=profiles_dedup)
     return render_template('searchpage.html')
