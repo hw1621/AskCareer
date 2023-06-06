@@ -59,6 +59,8 @@ p {
     border-radius: 20px;
     border: none;
     width: 60%;
+    max-height: 70vh;
+    overflow: scroll;
 }
 .dialog-header {
     margin-right: 1vw;
@@ -92,4 +94,51 @@ p {
 #chat-button {
     width: fit-content;
     padding-top: 0.5em;
+}
+.education {
+    margin-bottom: 1vh;
+}
+.ed-entry {
+    background-color: #e2e3e5;
+    padding: 0.3vw;
+    margin-bottom: 0.5vh;
+}
+.ed-name {
+    font-size: 15px;
+}
+.ed-grade {
+    font-size: 15px;
+    color: #666666;
+}
+
+.work-entry {
+    margin-bottom: 0.5vh;
+}
+.work-name {
+    font-size: 15px;
+}
+.work-title {
+    font-size: 15px;
+    color: #666666;
+}
+
+.collapsible {
+    background-color: #e2e3e5;
+    cursor: pointer;
+    padding: 0.3vw;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+.active, .collapsible:hover {
+    background-color: #ccc;
+}
+.content {
+    background-color: ghostwhite;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    font-size: 15px;
 }
