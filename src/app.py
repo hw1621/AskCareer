@@ -1,10 +1,26 @@
 from flask import Flask, render_template, request, make_response, redirect
 import requests
 import json
+from flask_login import LoginManager, UserMixin, login_user
 
 app = Flask(__name__)
+app.secret_key = 'drp26secretkey'
+login_manager = LoginManager()
+login_manager.session_protection = "strong"
+login_manager.init_app(app)
 
 CLIENT_ID = '1067444981581-lmgjcqdqb7i9g17ai0fhdh6nind11ljo.apps.googleusercontent.com'
+
+
+class User(UserMixin):
+    def __init__(self, uid):
+        self.id = uid
+
+
+@login_manager.user_loader
+def load_user(user_id) -> User:
+    return User(user_id)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -40,6 +56,8 @@ def signin():
     backendURL = "https://drp26backend.herokuapp.com/signin"
     response = requests.post(backendURL, token)
     if response.json()["authenticated"]:
+        uid = response.json()["user_id"]
+        login_user(User(uid))
         return redirect("https://drp26.herokuapp.com/")
     else:
         return redirect("https://drp26.herokuapp.com/")

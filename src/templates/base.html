@@ -24,6 +24,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
+            {% if current_user.is_authenticated %}
             <li class="nav-item">
                 <script src="https://accounts.google.com/gsi/client" async defer></script>
                 <div id="g_id_onload"
@@ -40,6 +41,7 @@
                      data-logo_alignment="left">
                 </div>
             </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
