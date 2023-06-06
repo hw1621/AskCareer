@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, make_response
 import requests
 import json
 
@@ -29,4 +29,6 @@ def index():
                 seen.add(i['uuid'])
                 profiles_dedup.append(i)
         return render_template("displaypage.html", profiles=profiles_dedup)
-    return render_template('searchpage.html')
+    response = make_response(render_template('searchpage.html'))
+    response.headers['Cross-Origin-Opener-Policy'] = 'same-origin-allow-popups'
+    return response
