@@ -1,11 +1,11 @@
 function showProfile(userId) {
     loadProfile(userId, function () {
-        document.querySelector('dialog').showModal();
+        document.getElementById('profile-modal').showModal();
     });
 }
 
 function hideProfile() {
-    document.querySelector('dialog').close();
+    document.getElementById('profile-modal').close();
     clearProfile();
 }
 
