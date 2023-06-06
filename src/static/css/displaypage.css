@@ -55,7 +55,7 @@ p {
     flex-direction: row;
 }
 
-.profile-modal {
+#profile-modal {
     border-radius: 20px;
     border: none;
     width: 60%;
