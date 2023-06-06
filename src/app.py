@@ -56,7 +56,7 @@ def signin():
     backendURL = "https://drp26backend.herokuapp.com/signin"
     response = requests.post(backendURL, token)
     if response.json()["authenticated"]:
-        uid = response.json()["user_id"]
+        uid = response.json()["userId"]
         login_user(User(uid))
         return redirect("https://drp26.herokuapp.com/")
     else:
