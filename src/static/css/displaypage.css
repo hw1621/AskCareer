@@ -95,7 +95,7 @@ p {
     width: fit-content;
     padding-top: 0.5em;
 }
-.education {
+#education {
     margin-bottom: 1vh;
 }
 .ed-entry {
