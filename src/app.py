@@ -77,7 +77,7 @@ def signin():
 def edit_profile():
     if request.method == "POST":
         profileInfo = request.form.to_dict()
-        userId = current_user.user_id
+        userId = current_user.uid
         profileId = current_user.profile_id
         response = requests.post(
             "https://drp26backend.herokuapp.com/uploadform",
