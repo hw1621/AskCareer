@@ -20,6 +20,8 @@ class User(UserMixin):
 
 @login_manager.user_loader
 def load_user(user_id):
+    url = "https://drp26backend.herokuapp.com/loaduser/" + user_id
+    print(url)
     r = requests.get("https://drp26backend.herokuapp.com/loaduser/" + user_id)
     print(r.text)
     profile_id = json.loads(r.text)['profileId']
