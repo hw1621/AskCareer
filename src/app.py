@@ -22,7 +22,7 @@ class User(UserMixin):
 def load_user(user_id):
     try:
         # r = requests.get("https://drp26backend.herokuapp.com/loaduser/" + user_id)
-        # profile_id = r.json().get("profileId")
+        # profile_id = r.json()["profileId"]
         profile_id = ""
     except Exception:
         return None
@@ -67,8 +67,7 @@ def signin():
     if response.json()["authenticated"]:
         r = response.json()
         uid = r["userId"]
-        profile_id = ""
-        # profile_id = r["profileId"]
+        profile_id = r["profileId"]
         login_user(User(uid, profile_id))
         return redirect("https://drp26.herokuapp.com/")
     else:
