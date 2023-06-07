@@ -59,7 +59,6 @@ def index():
     response.headers['Cross-Origin-Opener-Policy'] = 'same-origin-allow-popups'
     return response
 
-
 @app.route('/signin', methods=['POST'])
 def signin():
     token = request.form.to_dict()['credential']
@@ -74,8 +73,11 @@ def signin():
     else:
         return redirect("https://drp26.herokuapp.com/")
 
-
-
-
+@app.route('/edit-profile', methods=['GET', 'POST'])
+def edit_profile():
+    if request.method == "POST":
+        pass
+    else:
+        return render_template('profile.html')
 
 
