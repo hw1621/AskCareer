@@ -66,6 +66,7 @@ def signin():
     if response.json()["authenticated"]:
         r = response.json()
         uid = r["userId"]
+        print(uid)
         profile_id = r["profileId"]
         login_user(User(uid, profile_id))
         return redirect("https://drp26.herokuapp.com/")
