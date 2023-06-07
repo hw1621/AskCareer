@@ -21,9 +21,8 @@ class User(UserMixin):
 @login_manager.user_loader
 def load_user(user_id):
     try:
-        # r = requests.get("https://drp26backend.herokuapp.com/loaduser/" + user_id)
-        # profile_id = r.json()["profileId"]
-        profile_id = ""
+        r = requests.get("https://drp26backend.herokuapp.com/loaduser/" + user_id)
+        profile_id = r.json()["profileId"]
     except Exception:
         return None
     return User(user_id, profile_id)
