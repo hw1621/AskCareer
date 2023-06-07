@@ -77,11 +77,10 @@ def signin():
 def edit_profile():
     if request.method == "POST":
         profileInfo = request.form.to_dict()
-        userId = current_user.uid
         profileId = current_user.profile_id
         response = requests.post(
             "https://drp26backend.herokuapp.com/uploadform",
-            {"profile-info": profileInfo, "user-id": userId, "profile-id": profileId}
+            {"profile-info": profileInfo, "profile-id": profileId}
         )
         return redirect("https://drp26.herokuapp.com/")
     else:
