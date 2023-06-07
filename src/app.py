@@ -20,11 +20,13 @@ class User(UserMixin):
 
 @login_manager.user_loader
 def load_user(user_id):
-    url = "https://drp26backend.herokuapp.com/loaduser/" + user_id[0]
-    print(url)
-    r = requests.get(url)
-    print(r.text)
-    profile_id = json.loads(r.text)['profileId']
+    url = "https://drp26backend.herokuapp.com/loaduser/" + user_id
+    try:
+        r = requests.get(url)
+        profile_id = json.loads(r.text)['profileId']
+    except Exception:
+        print(url)
+        return None
     return User(user_id, profile_id)
 
 
@@ -66,7 +68,6 @@ def signin():
     if response.json()["authenticated"]:
         r = response.json()
         uid = r["userId"]
-        print(uid)
         profile_id = r["profileId"]
         login_user(User(uid, profile_id))
         return redirect("https://drp26.herokuapp.com/")
