@@ -76,7 +76,14 @@ def signin():
 @app.route('/edit-profile', methods=['GET', 'POST'])
 def edit_profile():
     if request.method == "POST":
-        pass
+        profileInfo = request.form.to_dict()
+        userId = current_user.user_id
+        profileId = current_user.profile_id
+        response = requests.post(
+            "https://drp26backend.herokuapp.com/uploadform",
+            {"profile-info": profileInfo, "user-id": userId, "profile-id": profileId}
+        )
+        return redirect("https://drp26.herokuapp.com/")
     else:
         return render_template('profile.html')
 
