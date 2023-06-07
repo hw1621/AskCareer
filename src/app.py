@@ -17,16 +17,10 @@ class User(UserMixin):
         self.id = uid
         self.profile_id = profile_id
 
-    def __eq__(self, other):
-        return self.id == other.id and self.profile_id == other.profile_id
-
-    def __hash__(self):
-        return hash((self.id, self.profile_id))
-
 
 @login_manager.user_loader
 def load_user(user_id) -> User:
-    r = requests.get("https://drp26backend.herokuapp.com/user/" + user_id)
+    r = requests.get("https://drp26backend.herokuapp.com/loaduser/" + user_id)
     profile_id = r.json().get("profileId")
     return User(user_id, profile_id)
 
@@ -60,7 +54,8 @@ def index():
     response.headers['Cross-Origin-Opener-Policy'] = 'same-origin-allow-popups'
     return response
 
-@app.route('/signin', methods = ['POST'])
+
+@app.route('/signin', methods=['POST'])
 def signin():
     token = request.form.to_dict()['credential']
     backend_url = "https://drp26backend.herokuapp.com/signin"
