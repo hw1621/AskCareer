@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, make_response, redirect
 import requests
 import json
-from flask_login import LoginManager, UserMixin, login_user
+from flask_login import LoginManager, UserMixin, login_user, current_user
 
 app = Flask(__name__)
 app.secret_key = 'drp26secretkey'
@@ -13,17 +13,28 @@ CLIENT_ID = '1067444981581-lmgjcqdqb7i9g17ai0fhdh6nind11ljo.apps.googleuserconte
 
 
 class User(UserMixin):
-    def __init__(self, uid):
+    def __init__(self, uid, profile_id):
         self.id = uid
+        self.profile_id = profile_id
+
+    def __eq__(self, other):
+        return self.id == other.id and self.profile_id == other.profile_id
+
+    def __hash__(self):
+        return hash((self.id, self.profile_id))
 
 
 @login_manager.user_loader
 def load_user(user_id) -> User:
-    return User(user_id)
+    r = requests.get("https://drp26backend.herokuapp.com/user/" + user_id)
+    profile_id = r.json().get("profileId")
+    return User(user_id, profile_id)
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    if not current_user.is_authenticated:
+        return render_template('home.html')
     if request.method == 'POST':
         form = request.form.to_dict()
         try:
@@ -32,7 +43,6 @@ def index():
             assert "job-summary" in form, "job-description not in form"
         except AssertionError as e:
             return str(e), 500
-        print(form)
         be_info = requests.get(
             "https://drp26backend.herokuapp.com/recommend/get_users",
             params=form
@@ -53,11 +63,13 @@ def index():
 @app.route('/signin', methods = ['POST'])
 def signin():
     token = request.form.to_dict()['credential']
-    backendURL = "https://drp26backend.herokuapp.com/signin"
-    response = requests.post(backendURL, token)
+    backend_url = "https://drp26backend.herokuapp.com/signin"
+    response = requests.post(backend_url, token)
     if response.json()["authenticated"]:
-        uid = response.json()["userId"]
-        login_user(User(uid))
+        r = response.json()
+        uid = r["userId"]
+        profile_id = r["profileId"]
+        login_user(User(uid, profile_id))
         return redirect("https://drp26.herokuapp.com/")
     else:
         return redirect("https://drp26.herokuapp.com/")
