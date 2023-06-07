@@ -20,20 +20,20 @@ function loadProfile(userId, _callback) {
         document.getElementById('profile-name').innerHTML = data['name'];
         document.getElementById('profile-email').innerHTML = data['email'];
         let education = data["educationHistory"];
-        for (let i = 0; i < education.length; i++) {
+        for (const element of education) {
             const edEntry = document.createElement("div");
             edEntry.className = "ed-entry";
 
             const edName = document.createElement("div");
             edName.className = "ed-name";
-            const institution = education[i]["institution"];
+            const institution = element["institution"];
             const schoolName = document.createTextNode(institution);
             edName.appendChild(schoolName);
             edEntry.insertBefore(edName, null);
 
             const edGrade = document.createElement("div");
             edGrade.className = "ed-grade";
-            const studyType = education[i]["studyType"];
+            const studyType = element["studyType"];
             const gradeType = document.createTextNode(studyType)
             edGrade.appendChild(gradeType);
             edEntry.insertBefore(edGrade, null);
@@ -92,7 +92,6 @@ function loadProfile(userId, _callback) {
                 }
             });
         }
-
     }).catch(function makeError(error) {
         console.log(error);
     }).then(_callback);

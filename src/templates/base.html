@@ -16,16 +16,11 @@
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" id="site-header">
-    <a class="navbar-brand" href="#"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+    <nav>
+    <div id="navbarNav">
+        <div class="navbar-left">&nbsp;</div>
+        <div class="navbar-right">
             {% if not current_user.is_authenticated %}
-            <li class="nav-item">
                 <script src="https://accounts.google.com/gsi/client" async defer></script>
                 <div id="g_id_onload"
                      data-client_id="1067444981581-lmgjcqdqb7i9g17ai0fhdh6nind11ljo.apps.googleusercontent.com"
@@ -34,17 +29,32 @@
                 </div>
                 <div class="g_id_signin"
                      data-type="standard"
-                     data-size="large"
+                     data-size="medium"
                      data-theme="outline"
                      data-text="sign_in_with"
                      data-shape="rectangular"
                      data-logo_alignment="left">
                 </div>
-            </li>
+            {% else %}
+                <div class="navbar-item dropdown">
+                <div class="dropbtn"><div><i class="bi bi-chat"></i></div></div>
+                <div class="dropdown-content">
+                    <div>No messages yet!</div>
+                </div>
+                </div>
+                <div class="navbar-item dropdown">
+                <div class="dropbtn"><div><i class="bi bi-person"></i></div></div>
+                <div class="dropdown-content">
+                    <a><div>Profile</div></a>
+                    <a><div>Personal Data</div></a>
+                    <a><div>Sign out</div></a>
+                </div>
+                </div>
             {% endif %}
-        </ul>
+            <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+        </div>
     </div>
-</nav>
+    </nav>
 {% block body %}{% endblock %}
 {% block javascripts %}{% endblock %}
 <div id="chat-modal">
