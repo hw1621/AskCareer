@@ -92,7 +92,7 @@ def edit_profile():
         profileId = current_user.profile_id
         response = requests.post(
             "https://drp26backend.herokuapp.com/uploadform",
-            {"profile-info": profileInfo, "profile-id": profileId}
+            json={"profile-info": profileInfo, "profile-id": profileId}
         )
         return profileInfo, response.json()['success']
     else:
