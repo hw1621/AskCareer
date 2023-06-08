@@ -82,13 +82,13 @@ def signin():
 def edit_profile():
     if request.method == "POST":
         formData = request.form
-        profileInfo = formData.to_dict()
+        profileInfo = dict(formData.to_dict())
         for i in (
-                ['name', 'email', 'real', 'title', 'company', 'start-date', 'end-date', 'summary', 'school-name',
+                ['title', 'company', 'start-date', 'end-date', 'summary', 'school-name',
                  'degree',
                  'start-date-edu', 'end-date-edu']):
             profileInfo[i] = formData.getlist(i)
-            print(profileInfo[i])
+        print(profileInfo)
         profileId = current_user.profile_id
         response = requests.post(
             "https://drp26backend.herokuapp.com/uploadform",
