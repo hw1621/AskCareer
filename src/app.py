@@ -77,12 +77,17 @@ def signin():
     else:
         return redirect("https://drp26.herokuapp.com/")
 
+
 @app.route('/edit-profile', methods=['GET', 'POST'])
 def edit_profile():
     if request.method == "POST":
-        for i in request.form:
-            print(request.form.getlist(i))
-        profileInfo = request.form.to_dict()
+        formData = request.form
+        profileInfo = formData.to_dict()
+        for i in (
+                ['name', 'email', 'real', 'title', 'company', 'start-date', 'end-date', 'summary', 'school-name',
+                 'degree',
+                 'start-date-edu', 'end-date-edu']):
+            profileInfo[i] = formData.getlist(i)
         profileId = current_user.profile_id
         response = requests.post(
             "https://drp26backend.herokuapp.com/uploadform",
@@ -95,6 +100,3 @@ def edit_profile():
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
-
-
-
