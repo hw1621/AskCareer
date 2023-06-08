@@ -153,6 +153,8 @@ a:hover {
 
 .chat-content .chat-message-div {
     width: 100%;
+    height: calc(100% - 2.2rem);
+    overflow: scroll;
 }
 
 .chat-content .send-box {
@@ -165,4 +167,18 @@ a:hover {
 #send-box-text {
     width: 100%;
     border-width: thin;
+}
+
+.msg-field {
+    background-color: #e5c7ca;
+    width: 40%;
+    border-radius: 10px;
+    padding: 0.5vw;
+    margin-top: 1vh;
+}
+.left-msg {
+    margin-left: 1vw;
+}
+.right-msg {
+    margin: 1vh 1vw 0 auto;
 }

@@ -1,9 +1,7 @@
-// let metas = document.getElementsByTagName('meta')
-// let profileId = metas.namedItem("user_profile_id").content
-let profileId = "6f1c38f0-cb79-4d4c-b4db-acc7fec56934";
+let profileID = document.getElementsByTagName('meta').namedItem("user_profile_id").content
 
 function fillProfile() {
-    const url = 'https://drp26backend.herokuapp.com/profiles/' + profileId;
+    const url = 'https://drp26backend.herokuapp.com/profiles/' + profileID;
     fetch(url).then(function getJson(response) {
         return response.json();
     }) .then(function writeData(data) {

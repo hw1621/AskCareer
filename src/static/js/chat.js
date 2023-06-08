@@ -1,6 +1,9 @@
 let modalBtn = document.getElementById("chat-modal-btn");
 let modal = document.getElementById("chat-modal");
 
+let metas = document.getElementsByTagName('meta')
+let profileId = metas.namedItem("user_profile_id").content
+
 currentChat = "";
 
 function openChatBox() {
@@ -34,7 +37,18 @@ msgBox.addEventListener("keydown", function(e) {
 });
 
 function displayMessage(message) {
-    // TODO: display a message to the chat modal
+    // message object = {"by": "person-profileid", "content": "text", "timestamp": "time"}
+    let chatArea = document.getElementById("chat-message-div");
+    let msg = document.createTextNode(message['content']);
+    let msgField = document.createElement("div");
+    msgField.className = "msg-field";
+    if (profileId == message['by']) {
+        msgField.classList.add("right-msg");
+    } else {
+        msgField.classList.add("left-msg");
+    }
+    msgField.appendChild(msg);
+    chatArea.insertBefore(msgField, null);
 }
 
 function refreshChat() {
@@ -63,6 +77,7 @@ function sendMsg() {
     let msg = msgBox.value;
     console.log(msg);
     msgBox.value = '';
+    displayMessage({"by": profileId, "content": msg, "timestamp": "time"})
 
     socket.emit('send_msg', {"msg": msg, "to": currentChat}, (ack) => {
         if (ack) {
