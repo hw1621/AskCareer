@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, make_response, redirect
 import requests
 import json
-from flask_login import LoginManager, UserMixin, login_user, current_user
+from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user
 from flask_socketio import SocketIO
 
 app = Flask(__name__)
@@ -97,6 +97,10 @@ def edit_profile():
     else:
         return render_template('profile.html')
 
+@app.route('/signout')
+def signout():
+    logout_user()
+    return redirect('https://drp26.herokuapp.com/')
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
