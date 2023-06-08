@@ -23,7 +23,6 @@ for (const element of dropdowns) {
 
 window.addEventListener("click",  function (event) {
     if (event.target.closest('.dropbtn') == null) {
-        console.log(event.target);
         for (const element of dropdowns) {
             let dropbtn = element.getElementsByClassName("dropbtn")[0];
             if (dropbtn.classList.contains('active')) {

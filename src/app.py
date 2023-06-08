@@ -2,9 +2,12 @@ from flask import Flask, render_template, request, make_response, redirect
 import requests
 import json
 from flask_login import LoginManager, UserMixin, login_user, current_user
+from flask_socketio import SocketIO
 
 app = Flask(__name__)
 app.secret_key = 'drp26secretkey'
+socketio = SocketIO(app)
+connected = []
 login_manager = LoginManager()
 login_manager.session_protection = "strong"
 login_manager.init_app(app)
@@ -59,6 +62,7 @@ def index():
     response.headers['Cross-Origin-Opener-Policy'] = 'same-origin-allow-popups'
     return response
 
+
 @app.route('/signin', methods=['POST'])
 def signin():
     token = request.form.to_dict()['credential']
@@ -85,3 +89,9 @@ def edit_profile():
         return redirect("https://drp26.herokuapp.com/")
     else:
         return render_template('profile.html')
+
+if __name__ == '__main__':
+    socketio.run(app, debug=True)
+
+
+

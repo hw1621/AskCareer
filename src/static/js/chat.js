@@ -19,3 +19,28 @@ function openChatBox() {
 }
 
 modalBtn.addEventListener("click", openChatBox);
+
+let socket = io();
+socket.on('connect', () => {
+    console.log('socket connected');
+});
+
+let msgBox = document.getElementById("send-box-text")
+
+msgBox.addEventListener("keydown", function(e) {
+    if (e.code === "Enter" && !e.shiftKey) {sendMsg();}
+});
+
+function sendMsg() {
+    let msg = msgBox.value;
+    console.log(msg);
+    msgBox.value = '';
+
+    socket.emit('send_msg', {"msg": msg}, (ack) => {
+        if (ack) {
+            console.log("message sent: " + msg);
+        } else {
+            console.log("message failed to send");
+        }
+    });
+}
