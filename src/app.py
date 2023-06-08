@@ -88,14 +88,12 @@ def edit_profile():
                  'degree',
                  'start-date-edu', 'end-date-edu']):
             profileInfo[i] = formData.getlist(i)
-        print(profileInfo)
-        # profileId = current_user.profile_id
-        # response = requests.post(
-        #     "https://drp26backend.herokuapp.com/uploadform",
-        #     json={"profile-info": profileInfo, "profile-id": profileId}
-        # )
-        # return profileInfo
-        return current_user.profile_id
+        profileId = str(current_user.profile_id)
+        response = requests.post(
+            "https://drp26backend.herokuapp.com/uploadform",
+            json={"profile-info": profileInfo, "profile-id": profileId}
+        )
+        return response
     else:
         return render_template('profile.html')
 
