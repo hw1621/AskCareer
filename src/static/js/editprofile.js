@@ -6,8 +6,13 @@ function fillProfile() {
     fetch(url).then(function getJson(response) {
         return response.json();
     }) .then(function writeData(data) {
-        document.getElementById("name").value = data['name'];
-        document.getElementById("email").value = data['email'];
+        document.getElementById("name").value = data["name"];
+        document.getElementById("email").value = data["email"];
+        const educationFields = data["educationHistory"];
+        for (let i = 1; i < educationFields.length; i++) {
+            createWorkField();
+            document.getElementsByName("school-name")[i].value = educationFields[i]["institution"];
+        }
     })
 }
 
