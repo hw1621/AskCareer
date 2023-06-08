@@ -1,3 +1,18 @@
+let metas = document.getElementsByTagName('meta')
+let profileId = metas.namedItem("user_profile_id").content
+
+function fillProfile() {
+    const url = 'https://drp26backend.herokuapp.com/profiles/' + profileId;
+    fetch(url).then(function getJson(response) {
+        return response.json();
+    }) .then(function writeData(data) {
+        document.getElementById("name").value = data['name'];
+        document.getElementById("email").value = data['email'];
+    })
+}
+
+fillProfile();
+
 function createWorkField() {
     const node = document.getElementById("work-experience").childNodes[1];
     const clone = node.cloneNode(true);
