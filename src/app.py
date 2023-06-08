@@ -80,13 +80,15 @@ def signin():
 @app.route('/edit-profile', methods=['GET', 'POST'])
 def edit_profile():
     if request.method == "POST":
+        for i in request.form:
+            print(request.form.getlist(i))
         profileInfo = request.form.to_dict()
         profileId = current_user.profile_id
         response = requests.post(
             "https://drp26backend.herokuapp.com/uploadform",
             {"profile-info": profileInfo, "profile-id": profileId}
         )
-        return profileInfo
+        return profileInfo, response.json()['success']
     else:
         return render_template('profile.html')
 
