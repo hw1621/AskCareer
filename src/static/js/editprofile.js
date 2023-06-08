@@ -1,5 +1,6 @@
-let metas = document.getElementsByTagName('meta')
-let profileId = metas.namedItem("user_profile_id").content
+// let metas = document.getElementsByTagName('meta')
+// let profileId = metas.namedItem("user_profile_id").content
+let profileId = "6f1c38f0-cb79-4d4c-b4db-acc7fec56934";
 
 function fillProfile() {
     const url = 'https://drp26backend.herokuapp.com/profiles/' + profileId;
@@ -8,11 +9,34 @@ function fillProfile() {
     }) .then(function writeData(data) {
         document.getElementById("name").value = data["name"];
         document.getElementById("email").value = data["email"];
+
         const educationFields = data["educationHistory"];
         for (let i = 1; i < educationFields.length; i++) {
-            createWorkField();
+            createEducationField();
             document.getElementsByName("school-name")[i].value = educationFields[i]["institution"];
+            document.getElementsByName("degree")[i].value = educationFields[i]["studyType"];
+            document.getElementsByName("start-date-edu")[i].value = educationFields[i]["start"];
+            document.getElementsByName("end-date-edu")[i].value = educationFields[i]["end"];
         }
+        document.getElementsByName("school-name")[0].value = educationFields[0]["institution"];
+        document.getElementsByName("degree")[0].value = educationFields[0]["studyType"];
+        document.getElementsByName("start-date-edu")[0].value = educationFields[0]["start"];
+        document.getElementsByName("end-date-edu")[0].value = educationFields[0]["end"];
+
+        const workFields = data["workHistory"];
+        for (let i = 1; i < workFields.length; i++) {
+            createWorkField();
+            document.getElementsByName("company")[i].value = workFields[i]["company"];
+            document.getElementsByName("title")[i].value = workFields[i]["position"];
+            document.getElementsByName("summary")[i].value = workFields[i]["summary"];
+            document.getElementsByName("start-date")[i].value = workFields[i]["start"];
+            document.getElementsByName("end-date")[i].value = workFields[i]["end"];
+        }
+        document.getElementsByName("company")[0].value = workFields[0]["company"];
+        document.getElementsByName("title")[0].value = workFields[0]["position"];
+        document.getElementsByName("summary")[0].value = workFields[0]["summary"];
+        document.getElementsByName("start-date")[0].value = workFields[0]["start"];
+        document.getElementsByName("end-date")[0].value = workFields[0]["end"];
     })
 }
 
