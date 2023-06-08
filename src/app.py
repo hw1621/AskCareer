@@ -85,5 +85,3 @@ def edit_profile():
         return redirect("https://drp26.herokuapp.com/")
     else:
         return render_template('profile.html')
-
-
