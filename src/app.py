@@ -90,6 +90,7 @@ def edit_profile():
     else:
         return render_template('profile.html')
 
+
 if __name__ == '__main__':
     socketio.run(app, debug=True)
 
