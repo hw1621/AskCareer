@@ -93,7 +93,7 @@ def edit_profile():
             "https://drp26backend.herokuapp.com/uploadform",
             json={"profile-info": profileInfo, "profile-id": profileId}
         )
-        return response
+        return redirect('https://drp26.herokuapp.com/')
     else:
         return render_template('profile.html')
 
