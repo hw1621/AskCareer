@@ -4,7 +4,7 @@ import json
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user
 from flask_socketio import SocketIO
 
-from blueprints.chats.chat_routes import chat
+from src.blueprints.chats.chat_routes import chat
 
 app = Flask(__name__)
 app.secret_key = 'drp26secretkey'
