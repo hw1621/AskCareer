@@ -5,6 +5,7 @@ let metas = document.getElementsByTagName('meta')
 let profileId = metas.namedItem("user_profile_id").content
 
 refreshNavBar();
+fetchOverview();
 
 
 let currentChat = "";
