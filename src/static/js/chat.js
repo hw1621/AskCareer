@@ -45,6 +45,7 @@ socket.on('new_message', (data) => {
     if (data["by"] === currentChat) {
         displayMessage(data);
         readChat().then(response => response.json());
+        refreshNavBar();
     }
     fetchOverview();
 });
@@ -108,6 +109,7 @@ function refreshChat() {
         }
     ).then(response => response.json())
     .then((data) => {
+        console.log(data);
         let chatMessageDiv = document.getElementById("chat-message-div");
         chatMessageDiv.innerHTML = "";
         for (const i of data["messages"]) {
@@ -133,6 +135,7 @@ function refreshNavBar() {
         response => response.json()
     ).then(
         (data) => {
+            console.log(data);
             document.getElementById("chat-drop").innerHTML = data["unread"];
         }
     ).catch((err) => {
@@ -155,9 +158,11 @@ function fetchOverview() {
         .then(
         (data) => {
             let chatOverview = document.getElementById("chat-drop-content");
-            chatOverview.innerHTML = "";
-
+            if (data["overview"].length !== 0) {
+                chatOverview.innerHTML = "";
+            }
             for (const i of data["overview"]) {
+                console.log(i);
                 let newDiv = document.createElement("div");
                 let newLink = document.createElement("a");
                 newDiv.onclick = function() {loadChat(i["otherPerson"])};
