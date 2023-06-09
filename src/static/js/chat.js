@@ -142,15 +142,17 @@ function fetchOverview() {
 
 function sendMsg() {
     let msg = msgBox.value;
-    console.log(msg);
-    msgBox.value = '';
-    displayMessage({"by": profileId, "content": msg, "timestamp": "time"})
+    if (currentChat !== "" && msg !== "") {
+        console.log(msg);
+        msgBox.value = '';
+        displayMessage({"by": profileId, "content": msg, "timestamp": "time"})
 
-    socket.emit('send_msg', {"content": msg, "recipient": currentChat}, (ack) => {
-        if (ack["ack"]) {
-            console.log("message sent: " + msg);
-        } else {
-            console.log("message failed to send");
-        }
-    });
+        socket.emit('send_msg', {"content": msg, "recipient": currentChat}, (ack) => {
+            if (ack["ack"]) {
+                console.log("message sent: " + msg);
+            } else {
+                console.log("message failed to send");
+            }
+        });
+    }
 }
