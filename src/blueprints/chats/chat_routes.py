@@ -25,7 +25,7 @@ def chat_overview():
 def load_chat():
     data = {
         "requester": current_user.profile_id,
-        "other": request.json["requester"]
+        "other": request.json["other"]
     }
     r = requests.post(
         f"{backend_chat_url}/load_chat",

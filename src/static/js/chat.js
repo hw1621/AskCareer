@@ -89,6 +89,9 @@ function refreshChat() {
                 let name = profileData['name'];
                 document.getElementById("chat-name").innerHTML = "Chat: " + name;
             }).catch((err) => {console.log(err);});
+            for (const i of data['messages']) {
+                displayMessage(i);
+            }
         }
     ).catch((err) => {
         console.log(err);
