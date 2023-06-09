@@ -19,6 +19,7 @@ function loadProfile(userId, _callback) {
     }).then(function writeData(data) {
         document.getElementById('profile-name').innerHTML = data['name'];
         document.getElementById('profile-email').innerHTML = data['email'];
+        document.getElementById('chatbtn').onclick = function() {showChat(userId)};
         let education = data["educationHistory"];
         for (const element of education) {
             const edEntry = document.createElement("div");
@@ -42,7 +43,7 @@ function loadProfile(userId, _callback) {
         }
 
         let workHistory = data["workHistory"]
-        for (let j = 0; j < workHistory.length; j++) {
+        for (const element of workHistory) {
             const workEntry = document.createElement("div");
             workEntry.className = "work-entry";
 
@@ -52,14 +53,14 @@ function loadProfile(userId, _callback) {
 
             const workName = document.createElement("div");
             workName.className = "work-name";
-            const company = workHistory[j]["company"];
+            const company = element["company"];
             const companyName = document.createTextNode(company);
             workName.appendChild(companyName);
             button.insertBefore(workName, null);
 
             const workTitle = document.createElement("div");
             workTitle.className = "work-title";
-            const title = workHistory[j]["position"];
+            const title = element["position"];
             const position = document.createTextNode(title);
             workTitle.appendChild(position);
             button.insertBefore(workTitle, null);
@@ -68,7 +69,7 @@ function loadProfile(userId, _callback) {
 
             const summary = document.createElement("div");
             summary.className = "content";
-            const content = workHistory[j]["summary"];
+            const content = element["summary"];
             const summaryContent = document.createTextNode(content);
             summary.appendChild(summaryContent);
             workEntry.insertBefore(summary, null);
@@ -92,9 +93,9 @@ function loadProfile(userId, _callback) {
                 }
             });
         }
-    }).catch(function makeError(error) {
+    }).then(_callback).catch(function makeError(error) {
         console.log(error);
-    }).then(_callback);
+    });
 }
 function clearProfile() {
     document.getElementById('profile-name').innerHTML = ' ';

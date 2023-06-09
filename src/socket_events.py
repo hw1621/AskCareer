@@ -1,5 +1,7 @@
+import requests
 from flask_socketio import join_room, emit, leave_room
 
+from blueprints.chats.chat_routes import backend_chat_url
 from .app import socketio, current_user
 
 connections = []
@@ -19,7 +21,21 @@ def connection():
 @socketio.on('send_msg')
 def send_message(data):
     print("received message:", data)
-    return True
+    data['sender'] = current_user.profile_id
+    r = requests.post(
+        f"{backend_chat_url}/send_message",
+        json=data,
+    )
+    response = r.json()
+    timestamp = response["timestamp"]
+    new_msg = {
+        "content": data["message"],
+        "by": data['message'],
+        "timestamp": timestamp
+    }
+    emit('new_message', new_msg, to=data['to'])
+    response['ack'] = True
+    return response
 
 
 @socketio.on('disconnect')

@@ -4,7 +4,7 @@ let modal = document.getElementById("chat-modal");
 let metas = document.getElementsByTagName('meta')
 let profileId = metas.namedItem("user_profile_id").content
 
-currentChat = "";
+let currentChat = "";
 
 function openChatBox() {
     modalBtn.classList.toggle("active");
@@ -23,11 +23,24 @@ function openChatBox() {
     }
 }
 
+function loadChat(profile) {
+    currentChat = profile;
+    refreshChat();
+    openChatBox();
+}
+
 modalBtn.addEventListener("click", openChatBox);
 
 let socket = io();
 socket.on('connect', () => {
     console.log('socket connected');
+});
+
+socket.on('new_message', (data) => {
+    refreshNavBar();
+    displayMessage(data); // TODO: only do this if the current chat is sender, otherwise refreshChat
+    refreshChat();
+    fetchOverview();
 });
 
 let msgBox = document.getElementById("send-box-text")
@@ -42,7 +55,7 @@ function displayMessage(message) {
     let msg = document.createTextNode(message['content']);
     let msgField = document.createElement("div");
     msgField.className = "msg-field";
-    if (profileId == message['by']) {
+    if (profileId === message['by']) {
         msgField.classList.add("right-msg");
     } else {
         msgField.classList.add("left-msg");
@@ -60,17 +73,68 @@ function refreshChat() {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({other: currentChat})
+            body: JSON.stringify({other: currentChat}),
+            credentials: "include"
         }
     ).then(
         (data) => {
-            // TODO: clear the chat content currently loaded
-            let messages = data.json().then((i) => i['messages'])
-            for (const msg of messages) {
-                displayMessage(msg)
-            }
+            let chatMessageDiv = document.getElementById("chat-message-div");
+            chatMessageDiv.innerHTML = "";
+            // fetch the profile name
+            const url = 'https://drp26backend.herokuapp.com/profiles/' + data['profileId'];
+            fetch(url).then(function getJson(response) {
+                console.assert(response.ok, 'Response was not ok.')
+                return response.json();
+            }).then(function(profileData) {
+                let name = profileData['name'];
+                document.getElementById("chat-name").innerHTML = "Chat: " + name;
+            }).catch((err) => {console.log(err);});
         }
-    )
+    ).catch((err) => {
+        console.log(err);
+    })
+}
+
+function refreshNavBar() {
+    fetch(
+        "/chat/unread",
+        {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({other: currentChat}),
+            credentials: "include"
+        }
+    ).then(
+        (data) => {
+            // TODO: change the status from the nav page
+        }
+    ).catch((err) => {
+        console.log(err);
+    });
+}
+
+function fetchOverview() {
+    fetch(
+        "/chat/chats_overview",
+        {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({other: currentChat}),
+            credentials: "include"
+        }
+    ).then(
+        (data) => {
+            // TODO: change the status of the messages navbar
+        }
+    ).catch((err) => {
+        console.log(err);
+    });
 }
 
 function sendMsg() {

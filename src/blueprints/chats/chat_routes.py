@@ -2,7 +2,7 @@ import requests
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 
-chat = Blueprint('chat', __name__, url_prefix='/chat')
+chat = Blueprint('chat', __name__)
 
 backend_chat_url = "https://drp26backend.herokuapp.com/chat"
 
@@ -22,7 +22,7 @@ def chat_overview():
 
 
 @chat.route('/load_chat', methods=["POST"])
-def chats_overview():
+def load_chat():
     data = {
         "requester": current_user.profile_id,
         "other": request.json()["requester"]
@@ -33,15 +33,3 @@ def chats_overview():
     )
     return r.json()
 
-
-@chat.route('/send_message', methods=["POST"])
-@login_required
-def send_message():
-    data = request.json().to_dict()
-    data['sender'] = current_user.profile_id
-    r = requests.post(
-        f"{backend_chat_url}/send_message",
-        json=data
-    )
-    #  TODO: send a new_message event to recipient's socket
-    return r.json()
