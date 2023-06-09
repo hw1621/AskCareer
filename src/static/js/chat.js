@@ -52,10 +52,10 @@ msgBox.addEventListener("keydown", function(e) {
 function displayMessage(message) {
     // message object = {"by": "person-profileid", "content": "text", "timestamp": "time"}
     let chatArea = document.getElementById("chat-message-div");
-    let msg = document.createTextNode(message['content']);
+    let msg = document.createTextNode(message["content"]);
     let msgField = document.createElement("div");
     msgField.className = "msg-field";
-    if (profileId === message['by']) {
+    if (profileId === message["by"]) {
         msgField.classList.add("right-msg");
     } else {
         msgField.classList.add("left-msg");
@@ -65,6 +65,14 @@ function displayMessage(message) {
 }
 
 function refreshChat() {
+    const url = 'https://drp26backend.herokuapp.com/profiles/' + currentChat;
+    fetch(url).then(function getJson(response) {
+        console.assert(response.ok, 'Response was not ok.')
+        return response.json();
+    }).then(function(profileData) {
+        let name = profileData["name"];
+        document.getElementById("chat-name").innerHTML = "Chat: " + name;
+    }).catch((err) => {console.log(err);});
     fetch(
         "/chat/load_chat",
         {
@@ -80,17 +88,7 @@ function refreshChat() {
         (data) => {
             let chatMessageDiv = document.getElementById("chat-message-div");
             chatMessageDiv.innerHTML = "";
-            // fetch the profile name
-            const url = 'https://drp26backend.herokuapp.com/profiles/' + currentChat;
-            fetch(url).then(function getJson(response) {
-                console.assert(response.ok, 'Response was not ok.')
-                return response.json();
-            }).then(function(profileData) {
-                let name = profileData.json()['name'];
-                document.getElementById("chat-name").innerHTML = "Chat: " + name;
-            }).catch((err) => {console.log(err);});
-            console.log(data.json());
-            let messages = data.json()['messages'];
+            let messages = data.json()["messages"];
             for (const i of messages) {
                 displayMessage(i);
             }
