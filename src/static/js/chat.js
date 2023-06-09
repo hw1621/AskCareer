@@ -11,23 +11,24 @@ fetchOverview();
 let currentChat = "";
 
 function openChatBox() {
-    modalBtn.classList.toggle("active");
+    if (currentChat !== "") {
+        modalBtn.classList.toggle("active");
 
-    let updownSymbol = document.getElementById("chat-modal-updown-symbol");
-    updownSymbol.classList.toggle("bi-chevron-double-up");
-    updownSymbol.classList.toggle("bi-chevron-double-down");
+        let updownSymbol = document.getElementById("chat-modal-updown-symbol");
+        updownSymbol.classList.toggle("bi-chevron-double-up");
+        updownSymbol.classList.toggle("bi-chevron-double-down");
 
-    let content = modalBtn.nextElementSibling;
-    if (content.style.display === "block") {
-        modal.style.height = "5vh";
-        content.style.display = "none";
-    } else {
-        modal.style.height = "50vh";
-        content.style.display = "block";
+        let content = modalBtn.nextElementSibling;
+        if (content.style.display === "block") {
+            modal.style.height = "5vh";
+            content.style.display = "none";
+        } else {
+            modal.style.height = "50vh";
+            content.style.display = "block";
+        }
+
+        readChat().then(response => response.json()).then((response) => refreshNavBar());
     }
-
-    readChat().then(response => response.json());
-    refreshNavBar();
 }
 
 function loadChat(profile) {
