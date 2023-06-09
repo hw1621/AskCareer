@@ -86,10 +86,12 @@ function refreshChat() {
                 console.assert(response.ok, 'Response was not ok.')
                 return response.json();
             }).then(function(profileData) {
-                let name = profileData['name'];
+                let name = profileData.json()['name'];
                 document.getElementById("chat-name").innerHTML = "Chat: " + name;
             }).catch((err) => {console.log(err);});
-            for (const i of data['messages']) {
+            console.log(data.json());
+            let messages = data.json()['messages'];
+            for (const i of messages) {
                 displayMessage(i);
             }
         }
