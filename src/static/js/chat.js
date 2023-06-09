@@ -42,6 +42,7 @@ socket.on('connect', () => {
 
 socket.on('new_message', (data) => {
     refreshNavBar();
+    console.log(data)
     if (data["by"] === currentChat) {
         displayMessage(data);
         readChat().then(response => response.json());
@@ -167,8 +168,8 @@ function fetchOverview() {
                 let newLink = document.createElement("a");
                 newDiv.onclick = function() {loadChat(i["otherPerson"])};
                 newDiv.text = i["otherPerson"] + ": " + i["unread"];
-                newLink.appendChild(newDiv);
-                chatOverview.appendChild(newLink);
+                newLink.insertBefore(newDiv, null);
+                chatOverview.insertBefore(newLink, null);
             }
         }
     ).catch((err) => {
