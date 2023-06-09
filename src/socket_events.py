@@ -33,7 +33,7 @@ def send_message(data):
         "by": data["recipient"],
         "timestamp": timestamp
     }
-    emit('new_message', new_msg, to=data['to'])
+    emit('new_message', new_msg, to=data['recipient'])
     response['ack'] = True
     return response
 
