@@ -56,7 +56,6 @@ p {
 }
 
 #profile-modal {
-    border-radius: 20px;
     border: none;
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
