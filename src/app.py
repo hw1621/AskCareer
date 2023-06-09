@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, make_response, redirect
 import requests
 import json
+
+from flask_cors import CORS
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user
 from flask_socketio import SocketIO
 
@@ -14,6 +16,19 @@ connected = []
 login_manager = LoginManager()
 login_manager.session_protection = "strong"
 login_manager.init_app(app)
+cors = CORS(
+    app,
+    resources={
+        r"/profiles/*": {
+            "origins": [
+                "https://drp26.herokuapp.com",
+                "http://localhost:5000",
+                "https://localhost:5000",
+            ]
+        }
+    }
+)
+
 
 CLIENT_ID = '1067444981581-lmgjcqdqb7i9g17ai0fhdh6nind11ljo.apps.googleusercontent.com'
 

@@ -19,7 +19,7 @@ function loadProfile(userId, _callback) {
     }).then(function writeData(data) {
         document.getElementById('profile-name').innerHTML = data['name'];
         document.getElementById('profile-email').innerHTML = data['email'];
-        document.getElementById('chatbtn').onclick = function() {showChat(userId)};
+        document.getElementById('chatbtn').onclick = () => {loadChat(userId)};
         let education = data["educationHistory"];
         for (const element of education) {
             const edEntry = document.createElement("div");
