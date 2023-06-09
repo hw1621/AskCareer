@@ -81,7 +81,7 @@ function refreshChat() {
             let chatMessageDiv = document.getElementById("chat-message-div");
             chatMessageDiv.innerHTML = "";
             // fetch the profile name
-            const url = 'https://drp26backend.herokuapp.com/profiles/' + data['profileId'];
+            const url = 'https://drp26backend.herokuapp.com/profiles/' + currentChat;
             fetch(url).then(function getJson(response) {
                 console.assert(response.ok, 'Response was not ok.')
                 return response.json();
