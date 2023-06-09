@@ -56,6 +56,7 @@ function displayMessage(message) {
     let chatArea = document.getElementById("chat-message-div");
     let msg = document.createTextNode(message["content"]);
     let msgField = document.createElement("div");
+    console.log(message);
     msgField.className = "msg-field";
     if (profileId === message["by"]) {
         msgField.classList.add("right-msg");
