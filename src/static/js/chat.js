@@ -25,6 +25,9 @@ function openChatBox() {
         modal.style.height = "50vh";
         content.style.display = "block";
     }
+
+    readChat().then(response => response.json());
+    refreshNavBar();
 }
 
 function loadChat(profile) {
