@@ -84,16 +84,14 @@ function refreshChat() {
             body: JSON.stringify({other: currentChat}),
             credentials: "include"
         }
-    ).then(
-        (data) => {
-            let chatMessageDiv = document.getElementById("chat-message-div");
-            chatMessageDiv.innerHTML = "";
-            let messages = data["messages"];
-            for (const i of messages) {
-                displayMessage(i);
-            }
+    ).then(response => response.json())
+    .then((data) => {
+        let chatMessageDiv = document.getElementById("chat-message-div");
+        chatMessageDiv.innerHTML = "";
+        for (const i of data["messages"]) {
+            displayMessage(i);
         }
-    ).catch((err) => {
+    }).catch((err) => {
         console.log(err);
     })
 }
