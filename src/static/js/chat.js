@@ -151,7 +151,17 @@ function fetchOverview() {
     ).then(response => response.json())
         .then(
         (data) => {
-            // TODO: change the status of the messages navbar
+            let chatOverview = document.getElementById("chat-drop-content");
+            chatOverview.innerHTML = "";
+
+            for (const i of data["overview"]) {
+                let newDiv = document.createElement("div");
+                let newLink = document.createElement("a");
+                newDiv.onclick = function() {loadChat(i["otherPerson"])};
+                newDiv.text = i["otherPerson"] + ": " + i["unread"];
+                newLink.appendChild(newDiv);
+                chatOverview.appendChild(newLink);
+            }
         }
     ).catch((err) => {
         console.log(err);
