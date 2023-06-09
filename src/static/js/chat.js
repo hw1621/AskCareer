@@ -38,8 +38,10 @@ socket.on('connect', () => {
 
 socket.on('new_message', (data) => {
     refreshNavBar();
-    displayMessage(data); // TODO: only do this if the current chat is sender, otherwise refreshChat
-    refreshChat();
+    if (data["by"] === currentChat) {
+        displayMessage(data);
+        readChat().then(response => response.json());
+    }
     fetchOverview();
 });
 
@@ -62,6 +64,21 @@ function displayMessage(message) {
     }
     msgField.appendChild(msg);
     chatArea.insertBefore(msgField, null);
+}
+
+async function readChat() {
+    return fetch(
+        "/chat/load_chat",
+        {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({other: currentChat}),
+            credentials: "include"
+        }
+    )
 }
 
 function refreshChat() {
@@ -109,8 +126,10 @@ function refreshNavBar() {
             credentials: "include"
         }
     ).then(
+        response => response.json()
+    ).then(
         (data) => {
-            // TODO: change the status from the nav page
+            document.getElementById("chat-drop").innerHTML = data["unread"];
         }
     ).catch((err) => {
         console.log(err);
@@ -129,7 +148,8 @@ function fetchOverview() {
             body: JSON.stringify({other: currentChat}),
             credentials: "include"
         }
-    ).then(
+    ).then(response => response.json())
+        .then(
         (data) => {
             // TODO: change the status of the messages navbar
         }
