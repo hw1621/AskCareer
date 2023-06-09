@@ -14,7 +14,6 @@
                     <div class="profile-image"></div>
                     <div class="profile-header-info">
                         <div id="profile-name"></div>
-                        <div>Currently taking an internship at Google</div>
                         <div id="profile-email"></div>
                         <div id="chat-button">
                             <button type="button" class="btn btn-primary" tabindex="1" autofocus onclick="openChatBox()" id="chatbtn">Chat!</button>
@@ -31,13 +30,21 @@
         </div>
         <script src="{{ url_for('static', filename="js/profileModal.js") }}"></script>
     </div>
+    {% macro most_relevant(user_info) -%}
+        {% set mrid = user_info["mostRelevant"] %}
+        {% for work_entry in user_info["workHistory"] %}
+            {% if work_entry["id"] == mrid %}
+                Work(ed) as {{ work_entry["position"] }} at {{ work_entry["company"] }}
+            {% endif %}
+        {% endfor %}
+    {% endmacro -%}
     {% macro profile(user_info) -%}
     <div>
         <a class="profile-thumb" href="#" onclick="showProfile('{{ user_info["uuid"] }}');">
       <div class="profile-image"></div>
       <div class="profile-info">
         <div id="name">{{ user_info["name"] }}</div>
-        <div>Currently taking an internship at Google</div>
+        <div>{{ most_relevant(user_info) }}</div>
       </div>
         </a>
     </div>
