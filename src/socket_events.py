@@ -1,7 +1,7 @@
 import requests
 from flask_socketio import join_room, emit, leave_room
 
-from blueprints.chats.chat_routes import backend_chat_url
+from src.blueprints.chats.chat_routes import backend_chat_url
 from .app import socketio, current_user
 
 connections = []

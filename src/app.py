@@ -105,5 +105,6 @@ def signout():
     logout_user()
     return redirect('https://drp26.herokuapp.com/')
 
+
 if __name__ == '__main__':
     socketio.run(app, debug=True)
