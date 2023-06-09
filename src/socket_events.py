@@ -30,7 +30,7 @@ def send_message(data):
     timestamp = response["timestamp"]
     new_msg = {
         "content": data["content"],
-        "by": data["recipient"],
+        "by": data["sender"],
         "timestamp": timestamp
     }
     emit('new_message', new_msg, to=data['recipient'])
