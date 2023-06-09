@@ -17,7 +17,7 @@ def check_unread():
 @chat.route('/chats_overview')
 @login_required
 def chat_overview():
-    r = requests.post(f"{backend_chat_url}/chat/chats_overview", json={"user": current_user.profile_id})
+    r = requests.post(f"{backend_chat_url}/chats_overview", json={"user": current_user.profile_id})
     return r.json()
 
 
@@ -31,5 +31,6 @@ def load_chat():
         f"{backend_chat_url}/load_chat",
         json=data
     )
+    print(r.json())
     return r.json()
 
