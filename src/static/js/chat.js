@@ -4,6 +4,9 @@ let modal = document.getElementById("chat-modal");
 let metas = document.getElementsByTagName('meta')
 let profileId = metas.namedItem("user_profile_id").content
 
+refreshNavBar();
+
+
 let currentChat = "";
 
 function openChatBox() {
@@ -118,12 +121,11 @@ function refreshNavBar() {
     fetch(
         "/chat/unread",
         {
-            method: "POST",
+            method: "GET",
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({other: currentChat}),
             credentials: "include"
         }
     ).then(
@@ -141,12 +143,11 @@ function fetchOverview() {
     fetch(
         "/chat/chats_overview",
         {
-            method: "POST",
+            method: "GET",
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({other: currentChat}),
             credentials: "include"
         }
     ).then(response => response.json())
