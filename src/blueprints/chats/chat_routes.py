@@ -11,7 +11,7 @@ backend_chat_url = "https://drp26backend.herokuapp.com/chat"
 @login_required
 def check_unread():
     r = requests.post(f"{backend_chat_url}/unread", json={"user": current_user.profile_id})
-    return {r.json()}
+    return r.json()
 
 
 @chat.route('/chats_overview')
