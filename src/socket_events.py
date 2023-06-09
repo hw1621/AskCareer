@@ -29,8 +29,8 @@ def send_message(data):
     response = r.json()
     timestamp = response["timestamp"]
     new_msg = {
-        "content": data["message"],
-        "by": data['message'],
+        "content": data["content"],
+        "by": data["recipient"],
         "timestamp": timestamp
     }
     emit('new_message', new_msg, to=data['to'])
