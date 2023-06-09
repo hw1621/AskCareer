@@ -146,8 +146,8 @@ function sendMsg() {
     msgBox.value = '';
     displayMessage({"by": profileId, "content": msg, "timestamp": "time"})
 
-    socket.emit('send_msg', {"msg": msg, "to": currentChat}, (ack) => {
-        if (ack) {
+    socket.emit('send_msg', {"msg": msg, "recipient": currentChat}, (ack) => {
+        if (ack["ack"]) {
             console.log("message sent: " + msg);
         } else {
             console.log("message failed to send");
