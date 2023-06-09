@@ -167,7 +167,7 @@ function fetchOverview() {
                 let newDiv = document.createElement("div");
                 let newLink = document.createElement("a");
                 newDiv.onclick = function() {loadChat(i["otherPerson"])};
-                newDiv.text = i["otherPerson"] + ": " + i["unread"];
+                newDiv.innerText = i["otherPerson"] + ": " + i["unread"];
                 newLink.insertBefore(newDiv, null);
                 chatOverview.insertBefore(newLink, null);
             }
