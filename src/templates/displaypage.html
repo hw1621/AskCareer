@@ -41,7 +41,7 @@
     {% macro profile(user_info) -%}
     <div>
         <a class="profile-thumb" href="#" onclick="showProfile('{{ user_info["uuid"] }}');">
-      <div class="profile-image"></div>
+      <div><img src="" id="profile-image-preview" class="profile-image"></div>
       <div class="profile-info">
         <div id="name">{{ user_info["name"] }}</div>
         <div>{{ most_relevant(user_info) }}</div>
