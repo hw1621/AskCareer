@@ -1,3 +1,5 @@
+from json import JSONDecodeError
+
 from flask import Flask, render_template, request, make_response, redirect
 import requests
 import json
@@ -42,11 +44,11 @@ class User(UserMixin):
 @login_manager.user_loader
 def load_user(user_id):
     url = "https://drp26backend.herokuapp.com/loaduser/" + user_id
+    r = requests.get(url)
     try:
-        r = requests.get(url)
         profile_id = json.loads(r.text)['profileId']
-    except Exception:
-        print(url)
+    except JSONDecodeError as e:
+        print(e)
         return None
     return User(user_id, profile_id)
 
@@ -99,21 +101,21 @@ def signin():
 @app.route('/edit-profile', methods=['GET', 'POST'])
 def edit_profile():
     if request.method == "POST":
-        formData = request.form
-        profileInfo = dict(formData.to_dict())
+        form_data = request.form
+        profile_info = dict(form_data.to_dict())
         for i in (
                 ['title', 'company', 'start-date', 'end-date', 'summary', 'school-name',
                  'degree',
                  'start-date-edu', 'end-date-edu']):
-            profileInfo[i] = formData.getlist(i)
-        profileId = str(current_user.profile_id)
-        response = requests.post(
+            profile_info[i] = form_data.getlist(i)
+        requests.post(
             "https://drp26backend.herokuapp.com/uploadform",
-            json={"profile-info": profileInfo, "profile-id": profileId}
+            json={"profile-info": profile_info, "profile-id": str(current_user.profile_id)}
         )
-        return redirect('https://drp26.herokuapp.com/')
+        return redirect('/edit-profile')
     else:
         return render_template('profile.html')
+
 
 @app.route('/signout')
 def signout():

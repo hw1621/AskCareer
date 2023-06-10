@@ -27,7 +27,7 @@ function openChatBox() {
             content.style.display = "block";
         }
 
-        readChat().then(response => response.json()).then((response) => refreshNavBar());
+        readChat().then(response => response.json()).then((_) => refreshNavBar());
     }
 }
 

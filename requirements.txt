@@ -1,6 +1,6 @@
 flask==2.3.2
 https://github.com/benoitc/gunicorn/archive/refs/heads/master.zip#egg=gunicorn==20.1.0
-pytest==7.3.1
+pytest==7.3.2
 requests==2.31.0
 Flask-Cors==3.0.10
 flask-login==0.6.2
