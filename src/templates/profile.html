@@ -5,7 +5,7 @@
 {% endblock %}
 {% block body %}
     <div id="header">Please fill in the following information.</div>
-    <form method="post" id="form">
+    <form method="post" id="form" enctype="multipart/form-data">
         <script src="{{ url_for('static', filename='js/editprofile.js') }}"></script>
         <div id="personal-info">
             <div class="form-floating mb-3">

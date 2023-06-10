@@ -1,3 +1,5 @@
+import base64
+
 from flask import Flask, render_template, request, make_response, redirect
 import requests
 import json
@@ -101,6 +103,10 @@ def edit_profile():
     if request.method == "POST":
         formData = request.form
         profileInfo = dict(formData.to_dict())
+        image = request.files['profile-photo']
+        image_string = base64.b64decode(image.read())
+        profileInfo['profilePhotoString'] = image_string
+        image.save("testProfile.jpg")
         for i in (
                 ['title', 'company', 'start-date', 'end-date', 'summary', 'school-name',
                  'degree',
