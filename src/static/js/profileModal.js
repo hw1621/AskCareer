@@ -17,6 +17,7 @@ function loadProfile(userId, _callback) {
         console.assert(response.ok, 'Response was not ok.')
         return response.json();
     }).then(function writeData(data) {
+        document.getElementById('profile-image').src = data['profilePhotoString']
         document.getElementById('profile-name').innerHTML = data['name'];
         document.getElementById('profile-email').innerHTML = data['email'];
         document.getElementById('chatbtn').onclick = () => {loadChat(userId)};
