@@ -9,6 +9,7 @@ function fillProfile() {
         document.getElementById("email").value = data["email"];
 
         const educationFields = data["educationHistory"];
+        console.log(educationFields.length);
         for (let i = 1; i < educationFields.length; i++) {
             createEducationField();
             document.getElementsByName("school-name")[i].value = educationFields[i]["institution"];
@@ -23,18 +24,19 @@ function fillProfile() {
 
         const workFields = data["workHistory"];
         for (let i = 1; i < workFields.length; i++) {
+            console.log("hello");
             createWorkField();
-            document.getElementsByName("company")[i+1].value = workFields[i+1]["company"];
-            document.getElementsByName("title")[i+1].value = workFields[i+1]["position"];
-            document.getElementsByName("summary")[i+1].value = workFields[i+1]["summary"];
-            document.getElementsByName("start-date")[i+1].value = workFields[i+1]["start"];
-            document.getElementsByName("end-date")[i+1].value = workFields[i+1]["end"];
+            document.getElementsByName("company")[i+1].value = workFields[i]["company"];
+            document.getElementsByName("title")[i+1].value = workFields[i]["position"];
+            document.getElementsByName("summary")[i+1].value = workFields[i]["summary"];
+            document.getElementsByName("start-date")[i+1].value = workFields[i]["start"];
+            document.getElementsByName("end-date")[i+1].value = workFields[i]["end"];
         }
-        document.getElementsByName("company")[1].value = workFields[1]["company"];
-        document.getElementsByName("title")[1].value = workFields[1]["position"];
-        document.getElementsByName("summary")[1].value = workFields[1]["summary"];
-        document.getElementsByName("start-date")[1].value = workFields[1]["start"];
-        document.getElementsByName("end-date")[1].value = workFields[1]["end"];
+        document.getElementsByName("company")[1].value = workFields[0]["company"];
+        document.getElementsByName("title")[1].value = workFields[0]["position"];
+        document.getElementsByName("summary")[1].value = workFields[0]["summary"];
+        document.getElementsByName("start-date")[1].value = workFields[0]["start"];
+        document.getElementsByName("end-date")[1].value = workFields[0]["end"];
     })
 }
 
