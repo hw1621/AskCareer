@@ -16,16 +16,13 @@ resource = boto3.resource(
 )
 
 
-def save_to_s3(file, bucket_name, acl="public-read"):
+def save_to_s3(file, bucket_name):
     try:
-        client.upload_fileobj(
-            file,
-            bucket_name,
-            file.filename,
-            ExtraArgs={
-                "ACL": acl,
-                "ContentType": file.content_type
-            }
+        client.put_object(
+            Body=file,
+            Bucket=bucket_name,
+            Key=file.filename,
+            ACL='public-read'
         )
     except Exception as e:
         print("Exception thrown: ", e)
