@@ -8,3 +8,6 @@ flask-socketio==5.3.4
 simple-websocket==0.10.1
 eventlet==0.33.3
 pyopenssl==23.2.0
+boto3==1.26.151
+pandas==2.0.2
+pillow==9.5.0

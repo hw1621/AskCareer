@@ -1,5 +1,9 @@
 from json import JSONDecodeError
 
+import base64
+
+import boto3
+from PIL import Image
 from flask import Flask, render_template, request, make_response, redirect
 import requests
 import json
@@ -9,6 +13,7 @@ from flask_login import LoginManager, UserMixin, login_user, current_user, logou
 from flask_socketio import SocketIO
 
 from src.blueprints.chats.chat_routes import chat
+from src.s3 import save_to_s3, default_image_string
 
 app = Flask(__name__)
 app.secret_key = 'drp26secretkey'
@@ -31,6 +36,19 @@ cors = CORS(
     }
 )
 
+s3_client = boto3.client(
+    's3',
+    aws_access_key_id = 'AKIAQXS56FU5AWVPF6UW',
+    aws_secret_access_key = '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',
+    region_name = 'eu-west-2'
+)
+
+s3_resource = boto3.resource(
+    's3',
+    aws_access_key_id = 'AKIAQXS56FU5AWVPF6UW',
+    aws_secret_access_key = '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',
+    region_name = 'eu-west-2'
+)
 
 CLIENT_ID = '1067444981581-lmgjcqdqb7i9g17ai0fhdh6nind11ljo.apps.googleusercontent.com'
 
@@ -103,6 +121,17 @@ def edit_profile():
     if request.method == "POST":
         form_data = request.form
         profile_info = dict(form_data.to_dict())
+        if 'profile-photo' in request.files and request.files['profile-photo'] is not None:
+            image = request.files['profile-photo']
+
+            #upload to S3
+            bucket_name = 'drp26profilephotos'
+            image_url = save_to_s3(image, bucket_name)
+            # return 'Image uploaded to S3 successfully, url = ' + image_url
+        else:
+            image_url = default_image_string
+
+        profile_info['profilePhotoString'] = image_url
         for i in (
                 ['title', 'company', 'start-date', 'end-date', 'summary', 'school-name',
                  'degree',

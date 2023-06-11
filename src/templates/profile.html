@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <form method="post" id="form">
+    <form method="post" id="form" enctype="multipart/form-data">
         <script src="{{ url_for('static', filename='js/editprofile.js') }}"></script>
         <div id="personal-info">
             <div class="form-floating mb-3">
@@ -45,6 +45,10 @@
             <div class="form-floating mb-3">
                 <input required id="email" name="email" type="email" class="form-control" placeholder="name@example.com">
                 <label for="email">Enter your email address: </label>
+            </div>
+            <div class="form-floating mb-3">
+                <input id="profile-photo" name="profile-photo" type="file" class="form-control"  accept=".jpg,.png,.raw,.jpeg"/>
+                <label for="profile-photo">Select your profile photo: </label>
             </div>
         </div>
         <div id="education">
@@ -95,7 +99,7 @@
                 </label>
             </div>
         </div>
-        <div id="work-experience" style="display: block">`
+        <div id="work-experience" style="display: block">
             <div class="work-experience-entry">
                 <div class="form-floating mb-3">
                     <input required name="company" type="text" class="form-control" placeholder="Google">
