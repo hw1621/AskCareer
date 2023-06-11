@@ -1,10 +1,10 @@
 import requests
 from flask_socketio import join_room, emit, leave_room
 
-from src.blueprints.chats.chat_routes import backend_chat_url
 from .app import socketio, current_user
 
 connections = []
+backend_chat_url = "https://drp26backend.herokuapp.com/chat"
 
 
 def socket_event_connection_check():
@@ -34,6 +34,34 @@ def send_message(data):
         "timestamp": timestamp
     }
     emit('new_message', new_msg, to=data['recipient'])
+    response['ack'] = True
+    return response
+
+
+@socketio.on('request_unread')
+def request_unread(_):
+    r = requests.post(f"{backend_chat_url}/unread", json={"user": current_user.profile_id})
+    response = r.json()
+    response['ack'] = True
+    return response
+
+
+@socketio.on('request_load_chat')
+def request_load_chat(data):
+    data['requester'] = current_user.profile_id
+    r = requests.post(
+        f"{backend_chat_url}/load_chat",
+        json=data
+    )
+    response = r.json()
+    response['ack'] = True
+    return response
+
+
+@socketio.on('request_chats_overview')
+def request_chats_overview():
+    r = requests.post(f"{backend_chat_url}/chats_overview", json={"user": current_user.profile_id})
+    response = r.json()
     response['ack'] = True
     return response
 

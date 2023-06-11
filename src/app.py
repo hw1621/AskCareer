@@ -133,8 +133,7 @@ def edit_profile():
         profile_info['profilePhotoString'] = image_url
         for i in (
                 ['title', 'company', 'start-date', 'end-date', 'summary', 'school-name',
-                 'degree',
-                 'start-date-edu', 'end-date-edu']):
+                 'degree', 'start-date-edu', 'end-date-edu']):
             profile_info[i] = form_data.getlist(i)
         requests.post(
             "https://drp26backend.herokuapp.com/uploadform",

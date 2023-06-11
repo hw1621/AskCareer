@@ -78,18 +78,11 @@ function displayMessage(message) {
 }
 
 async function readChat() {
-    return fetch(
-        "/chat/load_chat",
-        {
-            method: "POST",
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({other: currentChat}),
-            credentials: "include"
-        }
-    )
+    let chats;
+    socket.emit('request_load_chat', {other: currentChat}, (response) => {
+        chats = response;
+    });
+    return chats;
 }
 
 function refreshChat() {
@@ -101,18 +94,7 @@ function refreshChat() {
         let name = profileData["name"];
         document.getElementById("chat-name").innerHTML = "Chat: " + name;
     }).catch((err) => {console.log(err);});
-    fetch(
-        "/chat/load_chat",
-        {
-            method: "POST",
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({other: currentChat}),
-            credentials: "include"
-        }
-    ).then(response => response.json())
+    readChat().then(response => response.json())
     .then((data) => {
         console.log(data);
         let chatMessageDiv = document.getElementById("chat-message-div");
@@ -126,58 +108,25 @@ function refreshChat() {
 }
 
 function refreshNavBar() {
-    fetch(
-        "/chat/unread",
-        {
-            method: "GET",
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            credentials: "include"
-        }
-    ).then(
-        response => response.json()
-    ).then(
-        (data) => {
-            console.log(data);
-            document.getElementById("chat-drop").innerHTML = data["unread"];
-        }
-    ).catch((err) => {
-        console.log(err);
+    socket.emit('request_unread', {}, (data) => {
+        document.getElementById("chat-drop").innerHTML = data["unread"];
     });
 }
 
 function fetchOverview() {
-    fetch(
-        "/chat/chats_overview",
-        {
-            method: "GET",
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            credentials: "include"
+    socket.emit('request_chats_overview', {}, (data) => {
+        let chatOverview = document.getElementById("chat-drop-content");
+        if (data["overview"].length !== 0) {
+            chatOverview.innerHTML = "";
         }
-    ).then(response => response.json())
-        .then(
-        (data) => {
-            let chatOverview = document.getElementById("chat-drop-content");
-            if (data["overview"].length !== 0) {
-                chatOverview.innerHTML = "";
-            }
-            for (const i of data["overview"]) {
-                console.log(i);
-                let newDiv = document.createElement("div");
-                let newLink = document.createElement("a");
-                newDiv.onclick = function() {loadChat(i["otherPerson"])};
-                newDiv.innerText = i["otherPersonName"] + ": " + i["unread"];
-                newLink.insertBefore(newDiv, null);
-                chatOverview.insertBefore(newLink, null);
-            }
+        for (const i of data["overview"]) {
+            let newDiv = document.createElement("div");
+            let newLink = document.createElement("a");
+            newDiv.onclick = function() {loadChat(i["otherPerson"])};
+            newDiv.innerText = i["otherPersonName"] + ": " + i["unread"];
+            newLink.insertBefore(newDiv, null);
+            chatOverview.insertBefore(newLink, null);
         }
-    ).catch((err) => {
-        console.log(err);
     });
 }
 
