@@ -103,7 +103,7 @@ def edit_profile():
     if request.method == "POST":
         formData = request.form
         profileInfo = dict(formData.to_dict())
-        if 'profile-photo' in request.files:
+        if 'profile-photo' in request.files and request.files['profile-photo'] is not None:
             image = request.files['profile-photo']
             image_string = base64.b64encode(image.read()).decode("utf-8")
         else:
