@@ -22,19 +22,19 @@ function fillProfile() {
         document.getElementsByName("end-date-edu")[0].value = educationFields[0]["end"];
 
         const workFields = data["workHistory"];
-        for (let i = 1; i < workFields.length + 1; i++) {
+        for (let i = 2; i < workFields.length; i++) {
             createWorkField();
-            document.getElementsByName("company")[i].value = workFields[i]["company"];
-            document.getElementsByName("title")[i].value = workFields[i]["position"];
-            document.getElementsByName("summary")[i].value = workFields[i]["summary"];
-            document.getElementsByName("start-date")[i].value = workFields[i]["start"];
-            document.getElementsByName("end-date")[i].value = workFields[i]["end"];
+            document.getElementsByName("company")[i+1].value = workFields[i+1]["company"];
+            document.getElementsByName("title")[i+1].value = workFields[i+1]["position"];
+            document.getElementsByName("summary")[i+1].value = workFields[i+1]["summary"];
+            document.getElementsByName("start-date")[i+1].value = workFields[i+1]["start"];
+            document.getElementsByName("end-date")[i+1].value = workFields[i+1]["end"];
         }
-        // document.getElementsByName("company")[0].value = workFields[0]["company"];
-        // document.getElementsByName("title")[0].value = workFields[0]["position"];
-        // document.getElementsByName("summary")[0].value = workFields[0]["summary"];
-        // document.getElementsByName("start-date")[0].value = workFields[0]["start"];
-        // document.getElementsByName("end-date")[0].value = workFields[0]["end"];
+        document.getElementsByName("company")[1].value = workFields[1]["company"];
+        document.getElementsByName("title")[1].value = workFields[1]["position"];
+        document.getElementsByName("summary")[1].value = workFields[1]["summary"];
+        document.getElementsByName("start-date")[1].value = workFields[1]["start"];
+        document.getElementsByName("end-date")[1].value = workFields[1]["end"];
     })
 }
 
