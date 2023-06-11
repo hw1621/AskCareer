@@ -32,14 +32,14 @@ cors = CORS(
     }
 )
 
-client = boto3.client(
+s3_client = boto3.client(
     's3',
     aws_access_key_id = 'AKIAQXS56FU5AWVPF6UW',
     aws_secret_access_key = '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',
     region_name = 'eu-west-2'
 )
 
-resource = boto3.resource(
+s3_resource = boto3.resource(
     's3',
     aws_access_key_id = 'AKIAQXS56FU5AWVPF6UW',
     aws_secret_access_key = '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',
@@ -124,7 +124,6 @@ def edit_profile():
             #upload to S3
             bucket_name = 'drp26profilephotos'
             s3_key = 'uploads/' + image.filename
-            s3_client = boto3.client('s3')
             s3_client.upload_fileobj(image, bucket_name, s3_key)
             return 'Image uploaded to S3 successfully'
         else:
