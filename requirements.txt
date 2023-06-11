@@ -9,3 +9,4 @@ simple-websocket==0.10.1
 eventlet==0.33.3
 boto3==1.26.151
 pandas==2.0.2
+pillow==9.5.0

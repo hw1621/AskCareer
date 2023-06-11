@@ -1,6 +1,7 @@
 import base64
 
 import boto3
+from PIL import Image
 from flask import Flask, render_template, request, make_response, redirect
 import requests
 import json
@@ -118,12 +119,13 @@ def edit_profile():
         formData = request.form
         profileInfo = dict(formData.to_dict())
         if 'profile-photo' in request.files and request.files['profile-photo'] is not None:
-            image = request.files['profile-photo']
-            image_string = base64.b64encode(image.read()).decode("utf-8")
+            image_obj = request.files['profile-photo']
+            image = Image.open(image_obj.stream)
+            image_string = base64.b64encode(image_obj.read()).decode("utf-8")
 
             #upload to S3
             bucket_name = 'drp26profilephotos'
-            s3_key = 'uploads/' + image.filename
+            s3_key = 'uploads/' + image_obj.filename
             s3_client.upload_file(image, bucket_name, s3_key)
             return 'Image uploaded to S3 successfully'
         else:
