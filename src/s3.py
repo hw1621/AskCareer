@@ -18,6 +18,7 @@ resource = boto3.resource(
 
 def save_to_s3(file, bucket_name):
     try:
+        file.seek(0)
         client.put_object(
             Body=file.read(),
             Bucket=bucket_name,
