@@ -1,5 +1,4 @@
 import boto3
-from boto3 import s3
 
 client = boto3.client(
     's3',
@@ -15,6 +14,8 @@ resource = boto3.resource(
     region_name='eu-west-2'
 )
 
+default_image_string = "https://drp26profilephotos.s3.eu-west-2.amazonaws.com/profile-icon-design-free-vector.jpg"
+bucket_url = "https://drp26profilephotos.s3.eu-west-2.amazonaws.com/"
 
 def save_to_s3(file, bucket_name):
     try:
@@ -28,7 +29,7 @@ def save_to_s3(file, bucket_name):
     except Exception as e:
         print("Exception thrown: ", e)
         return e
-    return "https://drp26profilephotos.s3.eu-west-2.amazonaws.com/" + file.filename
+    return bucket_url + file.filename
 
 
 if __name__ == "__main__":
