@@ -18,7 +18,6 @@ function loadProfile(userId, _callback) {
         return response.json();
     }).then(function writeData(data) {
         //console.log(data['profilePhotoString'])
-        document.getElementById('profile-image-preview').src = 'data:image/jpeg;base64,'+ data['profilePhotoString'];
         document.getElementById('profile-image').src = 'data:image/jpeg;base64,'+ data['profilePhotoString'];
         document.getElementById('profile-name').innerHTML = data['name'];
         document.getElementById('profile-email').innerHTML = data['email'];
