@@ -4,6 +4,8 @@ let modal = document.getElementById("chat-modal");
 let metas = document.getElementsByTagName('meta')
 let profileId = metas.namedItem("user_profile_id").content
 
+let socket = io();
+
 refreshNavBar();
 fetchOverview();
 
@@ -39,7 +41,6 @@ function loadChat(profile) {
 
 modalBtn.addEventListener("click", openChatBox);
 
-let socket = io();
 socket.on('connect', () => {
     console.log('socket connected');
 });
