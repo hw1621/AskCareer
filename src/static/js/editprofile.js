@@ -22,7 +22,7 @@ function fillProfile() {
         document.getElementsByName("end-date-edu")[0].value = educationFields[0]["end"];
 
         const workFields = data["workHistory"];
-        for (let i = 1; i < workFields.length; i++) {
+        for (let i = 1; i < workFields.length + 1; i++) {
             createWorkField();
             document.getElementsByName("company")[i].value = workFields[i]["company"];
             document.getElementsByName("title")[i].value = workFields[i]["position"];
@@ -30,11 +30,11 @@ function fillProfile() {
             document.getElementsByName("start-date")[i].value = workFields[i]["start"];
             document.getElementsByName("end-date")[i].value = workFields[i]["end"];
         }
-        document.getElementsByName("company")[0].value = workFields[0]["company"];
-        document.getElementsByName("title")[0].value = workFields[0]["position"];
-        document.getElementsByName("summary")[0].value = workFields[0]["summary"];
-        document.getElementsByName("start-date")[0].value = workFields[0]["start"];
-        document.getElementsByName("end-date")[0].value = workFields[0]["end"];
+        // document.getElementsByName("company")[0].value = workFields[0]["company"];
+        // document.getElementsByName("title")[0].value = workFields[0]["position"];
+        // document.getElementsByName("summary")[0].value = workFields[0]["summary"];
+        // document.getElementsByName("start-date")[0].value = workFields[0]["start"];
+        // document.getElementsByName("end-date")[0].value = workFields[0]["end"];
     })
 }
 
@@ -83,11 +83,14 @@ function deleteWorkField() {
     }
 }
 
-const node = document.getElementById("work-experience");
-
 function hideWorkEntry() {
     if (document.getElementById("not-experienced").checked) {
         document.getElementById("work-experience").remove();
-        console.log(node);
+    } else {
+        const node = document.getElementById("clone-work-experience");
+        const clone = node.cloneNode(true);
+        clone.id = "work-experience";
+        clone.style.display = "block";
+        document.getElementById("form").insertBefore(clone, document.getElementById("work-buttons"));
     }
 }
