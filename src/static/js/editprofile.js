@@ -22,7 +22,7 @@ function fillProfile() {
         document.getElementsByName("end-date-edu")[0].value = educationFields[0]["end"];
 
         const workFields = data["workHistory"];
-        for (let i = 2; i < workFields.length; i++) {
+        for (let i = 1; i < workFields.length; i++) {
             createWorkField();
             document.getElementsByName("company")[i+1].value = workFields[i+1]["company"];
             document.getElementsByName("title")[i+1].value = workFields[i+1]["position"];
