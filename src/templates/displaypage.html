@@ -44,8 +44,8 @@
       <div><img src="" id="profile-image-preview" class="profile-image"></div>
       <script>
            var profile_id = "{{ user_info["uuid"] }}";
-           const url = 'https://drp26backend.herokuapp.com/profiles/' + profile_id;
-           fetch(url).then(function getJson(response) {
+           const link = 'https://drp26backend.herokuapp.com/profiles/' + profile_id;
+           fetch(link).then(function getJson(response) {
              console.assert(response.ok, 'Response was not ok.')
              return response.json();
     }).then(function writeData(data) {
