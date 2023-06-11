@@ -19,7 +19,7 @@ resource = boto3.resource(
 def save_to_s3(file, bucket_name):
     try:
         client.put_object(
-            Body=file,
+            Body=file.read(),
             Bucket=bucket_name,
             Key=file.filename,
             ACL='public-read'
@@ -27,7 +27,7 @@ def save_to_s3(file, bucket_name):
     except Exception as e:
         print("Exception thrown: ", e)
         return e
-    return "save successful"
+    return "https://drp26profilephotos.s3.eu-west-2.amazonaws.com/" + file.filename
 
 
 if __name__ == "__main__":
