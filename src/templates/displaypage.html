@@ -50,7 +50,8 @@
              return response.json();
     }).then(function writeData(data) {
              console.log(data['profilePhotoString']);
-             document.getElementById('profile-image-preview').src = data['profilePhotoString'];
+             document.getElementById('profile-image-preview').id = profile_id;
+             document.getElementById(profile_id).src = data['profilePhotoString'];
     })
       </script>
       <div class="profile-info">
