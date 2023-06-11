@@ -1,9 +1,6 @@
 from json import JSONDecodeError
 
-import base64
-
 import boto3
-from PIL import Image
 from flask import Flask, render_template, request, make_response, redirect
 import requests
 import json
@@ -121,7 +118,9 @@ def edit_profile():
     if request.method == "POST":
         form_data = request.form
         profile_info = dict(form_data.to_dict())
-        if 'profile-photo' in request.files and request.files['profile-photo'] is not None:
+        print(request.files)
+        if 'profile-photo' in request.files and request.files['profile-photo'] is not None and \
+                request.files['profile-photo'].filename != '':
             image = request.files['profile-photo']
 
             #upload to S3

@@ -17,6 +17,7 @@ resource = boto3.resource(
 default_image_string = "https://drp26profilephotos.s3.eu-west-2.amazonaws.com/profile-icon-design-free-vector.jpg"
 bucket_url = "https://drp26profilephotos.s3.eu-west-2.amazonaws.com/"
 
+
 def save_to_s3(file, bucket_name):
     try:
         file.seek(0)

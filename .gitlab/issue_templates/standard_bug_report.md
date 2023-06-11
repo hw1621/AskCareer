@@ -1,7 +1,7 @@
 # Basic Information
 What version is this on?
-- [ ] Local development environment w/ Git Commit Hash:
-- [ ] Production environment w/ Git Commit Hash:
+- [ ] Local development environment
+- [ ] Production environment
 
 # Actions
 The following are steps to reproduce the error:
@@ -14,3 +14,6 @@ Describe the current behaviour.
 
 # Log Information
 Please copy in relevant JavaScript console and/or server logs here.
+
+# Diagnosis
+If available.
