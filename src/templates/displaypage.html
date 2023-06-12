@@ -38,10 +38,10 @@
             {% endif %}
         {% endfor %}
     {% endmacro -%}
-    {% macro profile(user_info) -%}
+    {% macro profile(user_info, thumbnail_index) -%}
     <div>
       <a class="profile-thumb" href="#" onclick="showProfile('{{ user_info["uuid"] }}');">
-      <div><img src="" id="profile-image-preview" class="profile-image"></div>
+      <div><img src="" id="{{ 'profile-image-preview-' + thumbnail_index }}" class="profile-image"></div>
       <script>
            var profile_id = "{{ user_info["uuid"] }}";
            var profile_image_link = 'https://drp26backend.herokuapp.com/profiles/' + profile_id;
@@ -50,9 +50,8 @@
              return response.json();
     }).then(function writeData(data) {
              console.log(data['profilePhotoString']);
-             document.getElementById('profile-image-preview').id = profile_id;
-             console.log(profile_id);
-             document.getElementById(profile_id).src = data['profilePhotoString'];
+             console.log('profile-image-preview-' + thumbnail_index);
+             document.getElementById('profile-image-preview-' + thumbnail_index).src = data['profilePhotoString'];
     })
       </script>
       <div class="profile-info">
@@ -69,7 +68,7 @@
         </div>
     </div>
     {% for user in profiles %}
-        {{ profile(user) }}
+        {{ profile(user, loop.index) }}
     {% endfor %}
     <p>None of these meet your requirement? click here to <a class="classic-link" href="">report</a></p>
 {% endblock %}
