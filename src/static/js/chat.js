@@ -29,7 +29,8 @@ function openChatBox() {
             content.style.display = "block";
         }
 
-        readChat().then(response => response.json()).then((_) => refreshNavBar());
+        readChat();
+        refreshNavBar();
     }
 }
 
@@ -50,7 +51,7 @@ socket.on('new_message', (data) => {
     console.log(data)
     if (data["by"] === currentChat) {
         displayMessage(data);
-        readChat().then(response => response.json());
+        readChat();
         refreshNavBar();
     }
     fetchOverview();
@@ -78,12 +79,8 @@ function displayMessage(message) {
     chatArea.insertBefore(msgField, null);
 }
 
-async function readChat() {
-    let chats;
-    socket.emit('request_load_chat', {other: currentChat}, (response) => {
-        chats = response;
-    });
-    return chats;
+function readChat(_callback = (_) => {}) {
+    socket.emit('request_load_chat', {other: currentChat}, _callback);
 }
 
 function refreshChat() {
@@ -95,17 +92,14 @@ function refreshChat() {
         let name = profileData["name"];
         document.getElementById("chat-name").innerHTML = "Chat: " + name;
     }).catch((err) => {console.log(err);});
-    readChat().then(response => response.json())
-    .then((data) => {
+    readChat((data) => {
         console.log(data);
         let chatMessageDiv = document.getElementById("chat-message-div");
         chatMessageDiv.innerHTML = "";
         for (const i of data["messages"]) {
             displayMessage(i);
         }
-    }).catch((err) => {
-        console.log(err);
-    })
+    });
 }
 
 function refreshNavBar() {
