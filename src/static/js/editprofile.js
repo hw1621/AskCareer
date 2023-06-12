@@ -20,24 +20,25 @@ function fillProfile() {
         document.getElementsByName("degree")[0].value = educationFields[0]["studyType"];
         document.getElementsByName("start-date-edu")[0].value = educationFields[0]["start"];
         document.getElementsByName("end-date-edu")[0].value = educationFields[0]["end"];
-        console.log(data["hasExperience"])
         if (data["hasExperience"] === true) {
             document.getElementById("experienced").checked = true;
             document.getElementById("not-experienced").checked = false;
             const workFields = data["workHistory"];
-            for (let i = 1; i < workFields.length; i++) {
-                createWorkField();
-                document.getElementsByName("company")[i + 1].value = workFields[i]["company"];
-                document.getElementsByName("title")[i + 1].value = workFields[i]["position"];
-                document.getElementsByName("summary")[i + 1].value = workFields[i]["summary"];
-                document.getElementsByName("start-date")[i + 1].value = workFields[i]["start"];
-                document.getElementsByName("end-date")[i + 1].value = workFields[i]["end"];
+            if (!(workFields === undefined || workFields === null || workFields.length === 0)) {
+                for (let i = 1; i < workFields.length; i++) {
+                    createWorkField();
+                    document.getElementsByName("company")[i + 1].value = workFields[i]["company"];
+                    document.getElementsByName("title")[i + 1].value = workFields[i]["position"];
+                    document.getElementsByName("summary")[i + 1].value = workFields[i]["summary"];
+                    document.getElementsByName("start-date")[i + 1].value = workFields[i]["start"];
+                    document.getElementsByName("end-date")[i + 1].value = workFields[i]["end"];
+                }
+                document.getElementsByName("company")[1].value = workFields[0]["company"];
+                document.getElementsByName("title")[1].value = workFields[0]["position"];
+                document.getElementsByName("summary")[1].value = workFields[0]["summary"];
+                document.getElementsByName("start-date")[1].value = workFields[0]["start"];
+                document.getElementsByName("end-date")[1].value = workFields[0]["end"];
             }
-            document.getElementsByName("company")[1].value = workFields[0]["company"];
-            document.getElementsByName("title")[1].value = workFields[0]["position"];
-            document.getElementsByName("summary")[1].value = workFields[0]["summary"];
-            document.getElementsByName("start-date")[1].value = workFields[0]["start"];
-            document.getElementsByName("end-date")[1].value = workFields[0]["end"];
         } else {
             document.getElementById("not-experienced").checked = true;
             document.getElementById("experienced").checked = false;
