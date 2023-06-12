@@ -1,5 +1,4 @@
-// let profileID = document.getElementsByTagName('meta').namedItem("user_profile_id").content
-let profileID = ""
+let profileID = document.getElementsByTagName('meta').namedItem("user_profile_id").content
 
 function fillProfile() {
     const url = 'https://drp26backend.herokuapp.com/profiles/' + profileID;
