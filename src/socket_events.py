@@ -59,7 +59,7 @@ def request_load_chat(data):
 
 
 @socketio.on('request_chats_overview')
-def request_chats_overview():
+def request_chats_overview(_):
     r = requests.post(f"{backend_chat_url}/chats_overview", json={"user": current_user.profile_id})
     response = r.json()
     response['ack'] = True
