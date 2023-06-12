@@ -165,14 +165,17 @@ a:hover {
 }
 
 .msg-field {
-    background-color: #e5c7ca;
     border-radius: 10px;
     padding: 0.5vw;
     margin-top: 1vh;
+    width: 40%;
+    word-wrap: break-word;
 }
 .left-msg {
+    background-color: blanchedalmond;
     margin-left: 1vw;
 }
 .right-msg {
+    background-color: #e5c7ca;
     margin: 1vh 1vw 0 auto;
 }
