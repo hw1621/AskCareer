@@ -50,7 +50,7 @@
              return response.json();
     }).then(function writeData(data) {
              console.log(data['profilePhotoString']);
-             var thumbnailIndex = {{ thumbnail_index }};
+             var thumbnailIndex = "{{ thumbnail_index }}";
              console.log('profile-image-preview-' + thumbnail_index);
              document.getElementById('profile-image-preview').src = data['profilePhotoString'];
     })
