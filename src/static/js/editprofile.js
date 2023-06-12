@@ -1,4 +1,5 @@
-let profileID = document.getElementsByTagName('meta').namedItem("user_profile_id").content
+// let profileID = document.getElementsByTagName('meta').namedItem("user_profile_id").content
+let profileID = ""
 
 function fillProfile() {
     const url = 'https://drp26backend.herokuapp.com/profiles/' + profileID;
@@ -38,7 +39,8 @@ function fillProfile() {
             document.getElementsByName("start-date")[1].value = workFields[0]["start"];
             document.getElementsByName("end-date")[1].value = workFields[0]["end"];
         } else {
-            document.getElementById("not-experienced").checked = false;
+            document.getElementById("not-experienced").checked = true;
+            document.getElementById("experienced").checked = false;
             hideWorkEntry();
         }
     });
@@ -47,7 +49,8 @@ function fillProfile() {
 fillProfile();
 
 function createWorkField() {
-    const node = document.getElementById("work-experience").childNodes[1];
+    const node = document.getElementById("clone-work-experience").childNodes[1];
+    console.log(node);
     const clone = node.cloneNode(true);
     let inputs = clone.getElementsByTagName("input");
     for (const element of inputs) {
@@ -91,8 +94,10 @@ function deleteWorkField() {
 
 function hideWorkEntry() {
     if (document.getElementById("not-experienced").checked) {
-        document.getElementById("work-experience").remove();
-    } else {
+        if (document.getElementById("work-experience") !== null) {
+            document.getElementById("work-experience").remove();
+        }
+    } else if (document.getElementById("work-experience") === null) {
         const node = document.getElementById("clone-work-experience");
         const clone = node.cloneNode(true);
         clone.id = "work-experience";
@@ -100,3 +105,5 @@ function hideWorkEntry() {
         document.getElementById("form").insertBefore(clone, document.getElementById("work-buttons"));
     }
 }
+
+hideWorkEntry();

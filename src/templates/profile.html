@@ -36,7 +36,6 @@
         </div>
     </div>
     <form method="post" id="form" enctype="multipart/form-data">
-        <script src="{{ url_for('static', filename='js/editprofile.js') }}"></script>
         <div id="personal-info">
             <div class="form-floating mb-3">
                 <input id="name" name="name" type="text" required class="form-control" placeholder="name@example.com">
@@ -143,5 +142,6 @@
             <button id="form-submit" type="submit" name="form-submit" class="btn btn-primary submit-row-btn">Submit</button>
             <button id="form-submit" onclick="location.href='/';" class="btn btn-primary submit-row-btn">Home</button>
         </div>
+        <script src="{{ url_for('static', filename='js/editprofile.js') }}"></script>
     </form>
 {% endblock %}
