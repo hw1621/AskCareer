@@ -125,7 +125,7 @@ def edit_profile():
 
             #upload to S3
             bucket_name = 'drp26profilephotos'
-            image_url = save_to_s3(image, bucket_name)
+            image_url = save_to_s3(image, bucket_name, str(current_user.profile_id))
             # return 'Image uploaded to S3 successfully, url = ' + image_url
         else:
             image_url = default_image_string

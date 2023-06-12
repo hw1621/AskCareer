@@ -18,13 +18,13 @@ default_image_string = "https://drp26profilephotos.s3.eu-west-2.amazonaws.com/pr
 bucket_url = "https://drp26profilephotos.s3.eu-west-2.amazonaws.com/"
 
 
-def save_to_s3(file, bucket_name):
+def save_to_s3(file, bucket_name, key):
     try:
         file.seek(0)
         client.put_object(
             Body=file.read(),
             Bucket=bucket_name,
-            Key=file.filename,
+            Key=key,
             ACL='public-read'
         )
     except Exception as e:
