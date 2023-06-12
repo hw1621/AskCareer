@@ -38,16 +38,22 @@
     <form method="post" id="form" enctype="multipart/form-data">
         <div id="personal-info">
             <div class="form-floating mb-3">
-                <input id="name" name="name" type="text" required class="form-control" placeholder="name@example.com">
-                <label for="name">Enter your name: </label>
+                <div class="col-md-8">
+                    <input id="name" name="name" type="text" required class="form-control" placeholder="name@example.com">
+                    <label for="name">Enter your name: </label>
+                </div>
             </div>
             <div class="form-floating mb-3">
-                <input required id="email" name="email" type="email" class="form-control" placeholder="name@example.com">
-                <label for="email">Enter your email address: </label>
+                <div class="col-md-8">
+                    <input required id="email" name="email" type="email" class="form-control" placeholder="name@example.com">
+                    <label for="email">Enter your email address: </label>
+                </div>
             </div>
             <div class="form-floating mb-3">
-                <input id="profile-photo" name="profile-photo" type="file" class="form-control"  accept=".jpg,.png,.raw,.jpeg"/>
-                <label for="profile-photo">Select your profile photo: </label>
+                <div class="col-md-8">
+                    <input id="profile-photo" name="profile-photo" type="file" class="form-control"  accept=".jpg,.png,.raw,.jpeg"/>
+                    <label for="profile-photo">Select your profile photo: </label>
+                </div>
             </div>
         </div>
         <div id="education">
