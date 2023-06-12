@@ -22,8 +22,9 @@ function fillProfile() {
         document.getElementsByName("start-date-edu")[0].value = educationFields[0]["start"];
         document.getElementsByName("end-date-edu")[0].value = educationFields[0]["end"];
 
-        if (data["hasExperience"] === true) {
+        if (data["has_experience"] === true) {
             document.getElementById("experienced").checked = true;
+            document.getElementById("not-experienced").checked = false;
             const workFields = data["workHistory"];
             for (let i = 1; i < workFields.length; i++) {
                 createWorkField();
