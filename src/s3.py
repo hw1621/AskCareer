@@ -30,7 +30,7 @@ def save_to_s3(file, bucket_name, key):
     except Exception as e:
         print("Exception thrown: ", e)
         return e
-    return bucket_url + file.filename
+    return bucket_url + key
 
 
 if __name__ == "__main__":
