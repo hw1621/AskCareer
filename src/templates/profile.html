@@ -36,26 +36,28 @@
         </div>
     </div>
     <form method="post" id="form" enctype="multipart/form-data">
-        <div id="personal-info">
-            <div class="form-floating mb-3">
-                <div class="col-md-8">
-                    <input id="name" name="name" type="text" required class="form-control" placeholder="name@example.com">
-                    <label for="name">Enter your name: </label>
+        <div id="personal-info" >
+            <div class="personal-info-container">
+                <div class="left-div">
+                    <div class="form-floating mb-3 col-md-10 personal-info-entry">
+                        <input id="name" name="name" type="text" required class="form-control" placeholder="name@example.com">
+                        <label for="name">Enter your name: </label>
+                    </div>
+                    <div class="form-floating mb-3 col-md-10 personal-info-entry">
+                        <input required id="email" name="email" type="email" class="form-control" placeholder="name@example.com">
+                        <label for="email">Enter your email address: </label>
+                    </div>
+                    <div class="form-floating mb-3 col-md-10 personal-info-entry">
+                        <input id="profile-photo" name="profile-photo" type="file" class="form-control"  accept=".jpg,.png,.raw,.jpeg"/>
+                        <label for="profile-photo">Select your profile photo: </label>
+                    </div>
                 </div>
-            </div>
-            <div class="form-floating mb-3">
-                <div class="col-md-8">
-                    <input required id="email" name="email" type="email" class="form-control" placeholder="name@example.com">
-                    <label for="email">Enter your email address: </label>
-                </div>
-            </div>
-            <div class="form-floating mb-3">
-                <div class="col-md-8">
-                    <input id="profile-photo" name="profile-photo" type="file" class="form-control"  accept=".jpg,.png,.raw,.jpeg"/>
-                    <label for="profile-photo">Select your profile photo: </label>
+                <div class="right-div">
+                    <img src="" class="profile-image" id="profile-image">
                 </div>
             </div>
         </div>
+
         <div id="education">
             <div class="education-entry">
                 <div class="form-floating mb-3">

@@ -28,6 +28,30 @@ form {
     border-top: 2px solid #cccccc;
 }
 
+.personal-info-entry {
+    margin: 0
+}
+.profile-image {
+    width: 200px;
+    height: 200px;
+}
+
+.personal-info-container {
+    display: flex;
+    padding: 0;
+}
+
+.left-div {
+    width: 100%
+}
+
+.right-div {
+    width: 20%;
+    margin: auto;
+
+
+}
+
 .work-experience-entry {
     margin-top: 1.5vh;
     padding-top: 1.5vh;
