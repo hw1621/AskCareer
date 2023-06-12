@@ -179,3 +179,8 @@ a:hover {
     background-color: #e5c7ca;
     margin: 1vh 1vw 0 auto;
 }
+
+.home-button {
+    width: 30px;
+    color: white
+}

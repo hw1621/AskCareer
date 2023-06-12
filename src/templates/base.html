@@ -22,7 +22,11 @@
 <body>
     <nav>
     <div id="navbarNav">
-        <div class="navbar-left">&nbsp;</div>
+        <a href="https://drp26.herokuapp.com/">
+            <div class="navbar-left">
+                <img src="https://drp26profilephotos.s3.eu-west-2.amazonaws.com/home.png" class="home-button">
+            </div>
+        </a>
         <div class="navbar-right">
             {% if not current_user.is_authenticated %}
                 <script src="https://accounts.google.com/gsi/client" async defer></script>
