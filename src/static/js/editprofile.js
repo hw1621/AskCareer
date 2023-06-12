@@ -20,8 +20,8 @@ function fillProfile() {
         document.getElementsByName("degree")[0].value = educationFields[0]["studyType"];
         document.getElementsByName("start-date-edu")[0].value = educationFields[0]["start"];
         document.getElementsByName("end-date-edu")[0].value = educationFields[0]["end"];
-
-        if (data["has_experience"] === true) {
+        console.log(data["hasExperience"])
+        if (data["hasExperience"] === true) {
             document.getElementById("experienced").checked = true;
             document.getElementById("not-experienced").checked = false;
             const workFields = data["workHistory"];
