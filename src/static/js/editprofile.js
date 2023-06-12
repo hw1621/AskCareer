@@ -88,6 +88,9 @@ function deleteEducationField() {
 }
 
 function deleteWorkField() {
+    if (document.getElementById("work-experience") === null) {
+        return;
+    }
     const length = document.getElementById("work-experience").childNodes.length;
     const lastEduField = document.getElementById("work-experience").childNodes[length-1];
     if (length > 2) {
