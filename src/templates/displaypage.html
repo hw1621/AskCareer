@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <script src="{{ url_for('static', filename="js/profileModal.js") }}"></script>
+        <script src="{{ url_for('static', filename='js/profileModal.js') }}"></script>
     </div>
     {% macro most_relevant(user_info) -%}
         {% set mrid = user_info["mostRelevant"] %}
@@ -40,24 +40,12 @@
     {% endmacro -%}
     {% macro profile(user_info) -%}
     <div>
-      <a class="profile-thumb" href="#" onclick="showProfile('{{ user_info["uuid"] }}');">
-      <div><img src="" id="{{ user_info["uuid"] }}" class="profile-image"></div>
-      <script>
-           var profile_id = "{{ user_info["uuid"] }}";
-           console.log(profile_id);
-           var profile_image_link = 'https://drp26backend.herokuapp.com/profiles/' + profile_id;
-           fetch(profile_image_link).then(function getJson(response) {
-             console.assert(response.ok, 'Response was not ok.');
-             return response.json();
-    }).then(function writeData(data) {
-             console.log(data['profilePhotoString']);
-             document.getElementById(profile_id).src = data['profilePhotoString'];
-    })
-      </script>
-      <div class="profile-info">
-        <div id="name">{{ user_info["name"] }}</div>
-        <div>{{ most_relevant(user_info) }}</div>
-      </div>
+        <a class="profile-thumb" href="#" onclick="showProfile('{{ user_info['uuid'] }}');">
+            <div><img src="{{ user_info['profilePhotoString'] }}" class="profile-image"></div>
+            <div class="profile-info">
+              <div id="name">{{ user_info["name"] }}</div>
+              <div>{{ most_relevant(user_info) }}</div>
+            </div>
         </a>
     </div>
     {% endmacro -%}
