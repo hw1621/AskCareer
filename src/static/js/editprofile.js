@@ -2,9 +2,9 @@ let profileID = document.getElementsByTagName('meta').namedItem("user_profile_id
 
 function fillProfile() {
     const url = 'https://drp26backend.herokuapp.com/profiles/' + profileID;
-    fetch(url).then(function getJson(response) {
-        return response.json();
-    }) .then(function writeData(data) {
+    fetch(url).then(
+        (response) => response.json()
+    ).then(function writeData(data) {
         document.getElementById("name").value = data["name"];
         document.getElementById("email").value = data["email"];
 
@@ -43,6 +43,8 @@ function fillProfile() {
             document.getElementById("experienced").checked = false;
             hideWorkEntry();
         }
+    }).catch(function (error) {
+        console.log(error);
     });
 }
 
