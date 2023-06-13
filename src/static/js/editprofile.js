@@ -62,7 +62,7 @@ function createWorkField() {
     for (const element of clone.getElementsByTagName("textarea")) {
         element.value = "";
     }
-    document.getElementById("work-experience").appendChild(clone);
+    document.getElementById("work-experience-fields").appendChild(clone);
 }
 
 function createEducationField() {
@@ -88,11 +88,11 @@ function deleteEducationField() {
 }
 
 function deleteWorkField() {
-    if (document.getElementById("work-experience") === null) {
+    if (document.getElementById("work-experience-fields") === null) {
         return;
     }
-    const length = document.getElementById("work-experience").childNodes.length;
-    const lastEduField = document.getElementById("work-experience").childNodes[length-1];
+    const length = document.getElementById("work-experience-fields").childNodes.length;
+    const lastEduField = document.getElementById("work-experience-fields").childNodes[length-1];
     if (length > 2) {
         lastEduField.remove();
     }
@@ -100,13 +100,13 @@ function deleteWorkField() {
 
 function hideWorkEntry() {
     if (document.getElementById("not-experienced").checked) {
-        if (document.getElementById("work-experience") !== null) {
-            document.getElementById("work-experience").remove();
+        if (document.getElementById("work-experience-fields") !== null) {
+            document.getElementById("work-experience-fields").remove();
         }
-    } else if (document.getElementById("work-experience") === null) {
+    } else if (document.getElementById("work-experience-fields") === null) {
         const node = document.getElementById("clone-work-experience");
         const clone = node.cloneNode(true);
-        clone.id = "work-experience";
+        clone.id = "work-experience-fields";
         clone.style.display = "block";
         document.getElementById("form").insertBefore(clone, document.getElementById("work-buttons"));
     }
