@@ -66,7 +66,7 @@ function createWorkField() {
 }
 
 function createEducationField() {
-    const child = document.getElementById("education").childNodes[0];
+    const child = document.getElementById("education").childNodes[1];
     const clone = child.cloneNode(true);
     let inputs = clone.getElementsByTagName("input");
     for (const element of inputs) {
