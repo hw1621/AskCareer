@@ -35,16 +35,16 @@ cors = CORS(
 
 s3_client = boto3.client(
     's3',
-    aws_access_key_id = 'AKIAQXS56FU5AWVPF6UW',
-    aws_secret_access_key = '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',
-    region_name = 'eu-west-2'
+    aws_access_key_id='AKIAQXS56FU5AWVPF6UW',
+    aws_secret_access_key='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',
+    region_name='eu-west-2'
 )
 
 s3_resource = boto3.resource(
     's3',
-    aws_access_key_id = 'AKIAQXS56FU5AWVPF6UW',
-    aws_secret_access_key = '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',
-    region_name = 'eu-west-2'
+    aws_access_key_id='AKIAQXS56FU5AWVPF6UW',
+    aws_secret_access_key='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',
+    region_name='eu-west-2'
 )
 
 CLIENT_ID = '1067444981581-lmgjcqdqb7i9g17ai0fhdh6nind11ljo.apps.googleusercontent.com'
@@ -123,7 +123,7 @@ def edit_profile():
                 request.files['profile-photo'].filename != '':
             image = request.files['profile-photo']
 
-            #upload to S3
+            # upload to S3
             bucket_name = 'drp26profilephotos'
             image_url = save_to_s3(image, bucket_name, str(current_user.profile_id))
             # return 'Image uploaded to S3 successfully, url = ' + image_url
@@ -148,6 +148,19 @@ def edit_profile():
 def signout():
     logout_user()
     return redirect('https://drp26.herokuapp.com/')
+
+
+@app.route('/settings', method=['GET', 'POST'])
+def setting():
+    if request.method == 'GET':
+        #currently is the home page, need to change after the setting frontend is created
+        return render_template("settings.html")
+    else:
+        settings = request.form.to_dict()["isPause"]
+        # Currently consider the data received is in a form, need to modify later based on frontend
+        backend_url = "https://drp26backend.herokuapp.com/save_settings"
+        profileId = str(current_user.profile_id)
+        response = requests.post(backend_url, json={'profileId': profileId, 'settings': settings})
 
 
 if __name__ == '__main__':
