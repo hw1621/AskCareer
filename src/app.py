@@ -72,7 +72,9 @@ def load_user(user_id):
 def index():
     if not current_user.is_authenticated:
         return render_template('home.html')
-
+    r = requests.get(f"https://drp26backend.herokuapp.com/profiles/{current_user.profile_id}")
+    if r.status_code != 200:
+        return render_template('profile.html')
     if request.method == 'POST':
         form = request.form.to_dict()
         try:
