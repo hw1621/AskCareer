@@ -5,7 +5,7 @@ function fillProfile() {
     fetch(url).then(
         (response) => response.json()
     ).then(function writeData(data) {
-        document.getElementById("profile-image").src = data["profilePhotoString"]
+        document.getElementById("edit-profile-image").src = data["profilePhotoString"]
         document.getElementById("name").value = data["name"];
         document.getElementById("email").value = data["email"];
         const educationFields = data["educationHistory"];
