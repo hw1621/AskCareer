@@ -119,6 +119,7 @@ def edit_profile():
         form_data = request.form
         profile_info = dict(form_data.to_dict())
         print(request.files)
+        image_url = " "
         if 'profile-photo' in request.files and request.files['profile-photo'] is not None and \
                 request.files['profile-photo'].filename != '':
             image = request.files['profile-photo']
@@ -127,8 +128,6 @@ def edit_profile():
             bucket_name = 'drp26profilephotos'
             image_url = save_to_s3(image, bucket_name, str(current_user.profile_id))
             # return 'Image uploaded to S3 successfully, url = ' + image_url
-        else:
-            image_url = " "
 
         profile_info['profilePhotoString'] = image_url
         for i in (
