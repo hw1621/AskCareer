@@ -166,6 +166,7 @@ def setting():
         # Currently consider the data received is in a form, need to modify later based on frontend
         backend_url = "https://drp26backend.herokuapp.com/save_settings"
         profileId = str(current_user.profile_id)
+        print(settings)
         response = requests.post(backend_url, json={'profileId': profileId, 'settings': settings})
         return render_template("settings.html", settings=settings)
 
