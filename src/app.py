@@ -154,8 +154,10 @@ def signout():
 
 @app.route('/settings', methods=['GET', 'POST'])
 def setting():
+    r = requests.get(f"https://drp26backend.herokuapp.com/profiles/{current_user.profile_id}")
+    if r.status_code != 200:
+        return redirect("/")
     if request.method == 'GET':
-
         #currently is the home page, need to change after the setting frontend is created
         return render_template("settings.html")
     else:
