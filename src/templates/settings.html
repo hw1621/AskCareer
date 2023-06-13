@@ -11,7 +11,7 @@
     <form method="post">
         <div class="settings">
             <div class="form-check form-switch">
-                <input class="form-check-input" name="isPause" type="checkbox" role="switch" id="flexSwitchCheckDefault" {% if not settings['isPause'] %}checked{% endif %}>
+                <input class="form-check-input" name="isPause" type="checkbox" role="switch" id="flexSwitchCheckDefault" {% if settings['isPause'] %}checked{% endif %}>
                 <label class="form-check-label" for="flexSwitchCheckDefault">I don't want to be searched</label>
             </div>
         </div>
