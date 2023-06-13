@@ -188,3 +188,109 @@ a:hover {
     color: white;
     margin-bottom: 1vh
 }
+
+#profile-modal {
+    border: none;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.dialog-content {
+    background-color: #fefefe;
+    border: 1px solid #888;
+    margin: 10% 40vw 10% auto;
+    width: 40%; /* Could be more or less, depending on screen size */
+    max-height: 70vh;
+    position: static;
+    overflow: scroll;
+    border-radius: 20px;
+}
+
+.dialog-header {
+    margin-right: 0.5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+.dialog-body {
+    padding: 2vh 1vw 5vh 1vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+.profile-header-info {
+    padding-left: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#profile-name {
+    font-size: 30px;
+    font-weight: bold;
+}
+#profile-info {
+    padding-top: 1em;
+}
+#chat-button {
+    width: fit-content;
+    padding-top: 0.5em;
+}
+#education {
+    margin-bottom: 1vh;
+}
+.ed-entry {
+    background-color: #e2e3e5;
+    padding: 0.3vw;
+    margin-bottom: 0.5vh;
+}
+.ed-name {
+    font-size: 15px;
+}
+.ed-grade {
+    font-size: 15px;
+    color: #666666;
+}
+
+.work-entry {
+    margin-bottom: 0.5vh;
+}
+.work-name {
+    font-size: 15px;
+}
+.work-title {
+    font-size: 15px;
+    color: #666666;
+}
+
+.collapsible {
+    background-color: #e2e3e5;
+    cursor: pointer;
+    padding: 0.3vw;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+.active, .collapsible:hover {
+    background-color: #ccc;
+}
+.collapsible-content {
+    background-color: ghostwhite;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    font-size: 15px;
+}

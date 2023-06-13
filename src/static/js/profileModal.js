@@ -71,7 +71,7 @@ function loadProfile(userId, _callback) {
             workEntry.insertBefore(button, null);
 
             const summary = document.createElement("div");
-            summary.className = "content";
+            summary.className = "collapsible-content";
             const content = element["summary"];
             const summaryContent = document.createTextNode(content);
             summary.appendChild(summaryContent);

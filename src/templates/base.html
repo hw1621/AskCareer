@@ -48,6 +48,32 @@
         </div>
     </div>
     </nav>
+    <div id="profile-modal">
+        <div class="dialog-content">
+            <div class="dialog-body">
+                <div class="dialog-header">
+                    <button type="button" class="btn-close" onclick="hideProfile()" aria-label="Close"></button>
+                </div>
+                <div class="profile-header">
+                    <div><img src="" id="profile-image" class="profile-image"></div>
+                    <div class="profile-header-info">
+                        <div id="profile-name"></div>
+                        <div id="profile-email"></div>
+                        <div id="chat-button">
+                            <button type="button" class="btn btn-primary" tabindex="1" autofocus onclick="openChatBox()" id="chatbtn">Chat!</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="profile-info">
+                    <div style="font-size: 25px;">Education</div>
+                    <div id="education"></div>
+                    <div style="font-size: 25px;">Work Experience</div>
+                    <div id="work-experience"></div>
+                </div>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='js/profileModal.js') }}"></script>
+    </div>
 {% block body %}{% endblock %}
 {% block javascripts %}{% endblock %}
 {% if current_user.is_authenticated %}

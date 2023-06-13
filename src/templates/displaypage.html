@@ -4,32 +4,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/displaypage.css') }}" />
 {% endblock %}
 {% block body %}
-    <div id="profile-modal">
-        <div class="dialog-content">
-            <div class="dialog-body">
-                <div class="dialog-header">
-                    <button type="button" class="btn-close" onclick="hideProfile()" aria-label="Close"></button>
-                </div>
-                <div class="profile-header">
-                    <div><img src="" id="profile-image" class="profile-image"></div>
-                    <div class="profile-header-info">
-                        <div id="profile-name"></div>
-                        <div id="profile-email"></div>
-                        <div id="chat-button">
-                            <button type="button" class="btn btn-primary" tabindex="1" autofocus onclick="openChatBox()" id="chatbtn">Chat!</button>
-                        </div>
-                    </div>
-                </div>
-                <div id="profile-info">
-                    <div style="font-size: 25px;">Education</div>
-                    <div id="education"></div>
-                    <div style="font-size: 25px;">Work Experience</div>
-                    <div id="work-experience"></div>
-                </div>
-            </div>
-        </div>
-        <script src="{{ url_for('static', filename='js/profileModal.js') }}"></script>
-    </div>
     {% macro most_relevant(user_info) -%}
         {% set mrid = user_info["mostRelevant"] %}
         {% for work_entry in user_info["workHistory"] %}
@@ -41,7 +15,7 @@
     {% macro profile(user_info) -%}
     <div>
         <a class="profile-thumb" href="#" onclick="showProfile('{{ user_info['uuid'] }}');">
-            <div><img src="{{ user_info['profilePhotoString'] }}" class="profile-image"></div>
+            <div><img src="{{ user_info['profilePhotoString'] }}" class="profile-image" alt="Profile image of {{ user_info[name] }} }}"/></div>
             <div class="profile-info">
               <div id="name">{{ user_info["name"] }}</div>
               <div>{{ most_relevant(user_info) }}</div>
@@ -49,7 +23,7 @@
         </a>
     </div>
     {% endmacro -%}
-    <div class="heading">
+    <div class="display-page-heading">
         <div id="title">Based on your job description, we found the following people who might be able to help you...</div>
         <div id="back">
             <button onclick="window.location.href='/'" type="button" class="btn btn-secondary">back</button>
