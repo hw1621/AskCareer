@@ -66,7 +66,7 @@ function createWorkField() {
 }
 
 function createEducationField() {
-    const child = document.getElementById("education").childNodes[1];
+    const child = document.getElementById("education-fields").childNodes[1];
     const clone = child.cloneNode(true);
     let inputs = clone.getElementsByTagName("input");
     for (const element of inputs) {
@@ -75,12 +75,12 @@ function createEducationField() {
     for (const element of clone.getElementsByTagName("textarea")) {
         element.value = "";
     }
-    document.getElementById("education").appendChild(clone);
+    document.getElementById("education-fields").appendChild(clone);
 }
 
 function deleteEducationField() {
-    const length = document.getElementById("education").childNodes.length;
-    const lastEduField = document.getElementById("education").childNodes[length-1];
+    const length = document.getElementById("education-fields").childNodes.length;
+    const lastEduField = document.getElementById("education-fields").childNodes[length-1];
     if (length > 2) {
         console.log(length);
         lastEduField.remove();
