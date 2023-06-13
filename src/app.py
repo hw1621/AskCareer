@@ -72,6 +72,7 @@ def load_user(user_id):
 def index():
     if not current_user.is_authenticated:
         return render_template('home.html')
+
     if request.method == 'POST':
         form = request.form.to_dict()
         try:
