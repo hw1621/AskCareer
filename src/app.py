@@ -153,6 +153,7 @@ def signout():
 @app.route('/settings', methods=['GET', 'POST'])
 def setting():
     if request.method == 'GET':
+
         #currently is the home page, need to change after the setting frontend is created
         return render_template("settings.html")
     else:
