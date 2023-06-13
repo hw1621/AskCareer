@@ -167,7 +167,7 @@ def setting():
         backend_url = "https://drp26backend.herokuapp.com/save_settings"
         profileId = str(current_user.profile_id)
         response = requests.post(backend_url, json={'profileId': profileId, 'settings': settings})
-        return render_template("settings.html", settings=r.json())
+        return render_template("settings.html", settings=settings)
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
