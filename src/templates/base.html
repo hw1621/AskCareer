@@ -30,7 +30,9 @@
         <div class="navbar-right">
             {% if current_user.is_authenticated %}
                 <div class="navbar-item dropdown">
-                <div class="dropbtn" id="chat-drop"><div><i class="bi bi-chat"></i></div></div>
+                <div class="dropbtn" id="chat-drop">
+                    <div><div class="bi bi-chat"><div class="msg-badge" id="navbar-unread"></div></div></div>
+                </div>
                 <div class="dropdown-content" id="chat-drop-content">
                     <div id="empty-message">No messages yet!</div>
                 </div>

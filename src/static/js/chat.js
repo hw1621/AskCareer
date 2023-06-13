@@ -105,7 +105,9 @@ function refreshChat() {
 
 function refreshNavBar() {
     socket.emit('request_unread', {}, (data) => {
-        document.getElementById("chat-drop").innerHTML = data["unread"];
+        let unread = data["unread"];
+        if (unread === 0) unread = "";
+        document.getElementById("navbar-unread").innerHTML = unread;
     });
 }
 

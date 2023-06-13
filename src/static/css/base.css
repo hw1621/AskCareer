@@ -52,7 +52,7 @@ a:hover {
 }
 
 .dropbtn {
-    font-size: 1.5rem;
+    font-size: 24pt;
     border: none;
     cursor: pointer;
     height: 100%;
@@ -60,6 +60,19 @@ a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+.msg-badge {
+    font-size: 10pt;
+    background-color: #ed2324;
+    border-radius: 50%;
+    text-align: center;
+    padding: 2px 2px;
+    width: 11pt;
+    height: 1lh;
+    position: relative;
+    left: 15pt;
+    bottom: 28pt;
+    display: block;
 }
 
 .dropdown {
