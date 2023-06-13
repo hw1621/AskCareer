@@ -98,7 +98,7 @@ def index():
     return response
 
 
-@app.route('/signin', methods=['POST'])
+@app.route('/signin', method=['POST'])
 def signin():
     token = request.form.to_dict()['credential']
     backend_url = "https://drp26backend.herokuapp.com/signin"
@@ -156,12 +156,12 @@ def setting():
         #currently is the home page, need to change after the setting frontend is created
         return render_template("settings.html")
     else:
-        settings = request.form.to_dict()["isPause"]
+        settings = request.form.to_dict()
         # Currently consider the data received is in a form, need to modify later based on frontend
         backend_url = "https://drp26backend.herokuapp.com/save_settings"
         profileId = str(current_user.profile_id)
         response = requests.post(backend_url, json={'profileId': profileId, 'settings': settings})
-
+        return render_template("settings.html")
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
