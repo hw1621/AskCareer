@@ -3,3 +3,8 @@ h1 {
     margin: 2vh 6vw ;
     font-size: 26px;
 }
+
+.settings{
+    width: 50%;
+    margin: auto auto;
+}
