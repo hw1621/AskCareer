@@ -149,7 +149,9 @@ a:hover {
 .chat-content .chat-message-div {
     width: 100%;
     height: calc(45vh - 2.2rem);
-    overflow: scroll;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .chat-content .send-box {
