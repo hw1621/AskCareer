@@ -111,5 +111,3 @@ function hideWorkEntry() {
         document.getElementById("form").insertBefore(clone, document.getElementById("work-buttons"));
     }
 }
-
-hideWorkEntry();
