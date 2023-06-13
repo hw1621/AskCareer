@@ -4,28 +4,34 @@
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/homepage.css') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
 {% endblock %}
 {% block body %}
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://accounts.google.com/gsi/client?hl=en" async defer></script>
     <div id="home">
-        <div id="title">Looking for someone to communicate throughout your internship application process? </div>
-        <div id="statement">Login/Register to get started!</div>
-        <i id="log" class="bi bi-chat-left-dots-fill"></i>
-        <div id="google">
-            <div id="g_id_onload"
-                 data-client_id="1067444981581-lmgjcqdqb7i9g17ai0fhdh6nind11ljo.apps.googleusercontent.com"
-                 data-login_uri="https://drp26.herokuapp.com/signin"
-                 data-auto_prompt="false">
+        <div class="moto-container">
+            <div id="title" class="text">Someone to guide you through the entire internship application. </div>
+            <div id="statement" class="text">-- A platform that connects you with hundreds of previous applicants</div>
+            <div id="google">
+                <div id="g_id_onload"
+                     data-client_id="1067444981581-lmgjcqdqb7i9g17ai0fhdh6nind11ljo.apps.googleusercontent.com"
+                     data-login_uri="https://drp26.herokuapp.com/signin"
+                     data-auto_prompt="false">
+                </div>
+                <div class="g_id_signin"
+                     data-locale="en"
+                     data-type="standard"
+                     data-size="large"
+                     data-theme="outline"
+                     data-text="continue_with"
+                     data-shape="pill"
+                     data-logo_alignment="left">
+                </div>
             </div>
-            <div class="g_id_signin"
-                 data-type="standard"
-                 data-size="large"
-                 data-theme="outline"
-                 data-text="sign_in_with"
-                 data-shape="pill"
-                 data-logo_alignment="left">
-            </div>
+        </div>
+        <div class="white-area">
+
         </div>
     </div>
 
