@@ -159,8 +159,8 @@ def setting():
         return redirect("/")
     if request.method == 'GET':
         content = {'user_id': current_user.id, 'profile_id': current_user.profile_id}
-        r = requests.post("https://drp26backend.herokuapp.com/get_settings", json=content)
-        return render_template("settings.html", settings=r.json())
+        r = requests.post("https://drp26backend.herokuapp.com/get_settings", content)
+        return render_template("settings.html", settings=r.url)
     else:
         settings = request.form.to_dict()
         # Currently consider the data received is in a form, need to modify later based on frontend
