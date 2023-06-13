@@ -76,7 +76,8 @@ function displayMessage(message) {
         msgField.classList.add("left-msg");
     }
     msgField.appendChild(msg);
-    chatArea.insertBefore(msgField, null);
+    let firstMessage = chatArea.children[0];
+    chatArea.insertBefore(msgField, firstMessage);
 }
 
 function readChat(_callback = (_) => {}) {
