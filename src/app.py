@@ -98,7 +98,7 @@ def index():
     return response
 
 
-@app.route('/signin', method=['POST'])
+@app.route('/signin', methods=['POST'])
 def signin():
     token = request.form.to_dict()['credential']
     backend_url = "https://drp26backend.herokuapp.com/signin"
