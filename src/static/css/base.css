@@ -72,7 +72,7 @@ a:hover {
     position: relative;
     left: 15pt;
     bottom: 28pt;
-    display: block;
+    display: none;
 }
 
 .dropdown {
