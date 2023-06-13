@@ -1,12 +1,13 @@
-#header {
+#instruction-div {
+    padding-top: 5vh;
     text-align: center;
     font-size: 26px;
 }
 
 form {
-  width: 60%;
-  margin: 0 auto;
-  padding: 2vh;
+    width: 60%;
+    margin: 0 auto;
+    padding: 2vh;
 }
 
 #personal-info {

@@ -22,20 +22,13 @@
 <body>
     <nav>
     <div id="navbarNav">
-        <a href="https://drp26.herokuapp.com/">
-            <div class="navbar-left">
-                <img src="https://drp26profilephotos.s3.eu-west-2.amazonaws.com/logo.png" class="home-button">
-            </div>
-        </a>
+        <div class="navbar-left">
+            <a href="https://drp26.herokuapp.com/">
+                <img src="https://drp26profilephotos.s3.eu-west-2.amazonaws.com/logo.png" class="header-logo" alt="ASKareers">
+            </a>
+        </div>
         <div class="navbar-right">
-            {% if not current_user.is_authenticated %}
-                <script src="https://accounts.google.com/gsi/client" async defer></script>
-                <div id="g_id_onload"
-                     data-client_id="1067444981581-lmgjcqdqb7i9g17ai0fhdh6nind11ljo.apps.googleusercontent.com"
-                     data-login_uri="https://drp26.herokuapp.com/signin"
-                     data-auto_prompt="false">
-                </div>
-            {% else %}
+            {% if current_user.is_authenticated %}
                 <div class="navbar-item dropdown">
                 <div class="dropbtn" id="chat-drop"><div><i class="bi bi-chat"></i></div></div>
                 <div class="dropdown-content" id="chat-drop-content">
