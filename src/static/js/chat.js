@@ -13,8 +13,31 @@ let currentChat = "";
 
 if (getCookie('currentChat') !== null) {
     currentChat = getCookie('currentChat');
-    console.log(currentChat);
+    refreshChat();
 }
+
+modalBtn.addEventListener("click", openChatBox);
+
+socket.on('connect', () => {
+    console.log('socket connected');
+});
+
+socket.on('new_message', (data) => {
+    refreshNavBar();
+    console.log(data)
+    if (data["by"] === currentChat) {
+        displayMessage(data);
+        readChat();
+        refreshNavBar();
+    }
+    fetchOverview();
+});
+
+let msgBox = document.getElementById("send-box-text")
+
+msgBox.addEventListener("keydown", function(e) {
+    if (e.code === "Enter" && !e.shiftKey) {sendMsg();}
+});
 
 function getCookie(currentChat) {
     var cookieArr = document.cookie.split(";");
@@ -56,29 +79,6 @@ function loadChat(profile) {
     refreshChat();
     openChatBox();
 }
-
-modalBtn.addEventListener("click", openChatBox);
-
-socket.on('connect', () => {
-    console.log('socket connected');
-});
-
-socket.on('new_message', (data) => {
-    refreshNavBar();
-    console.log(data)
-    if (data["by"] === currentChat) {
-        displayMessage(data);
-        readChat();
-        refreshNavBar();
-    }
-    fetchOverview();
-});
-
-let msgBox = document.getElementById("send-box-text")
-
-msgBox.addEventListener("keydown", function(e) {
-    if (e.code === "Enter" && !e.shiftKey) {sendMsg();}
-});
 
 function displayMessage(message) {
     // message object = {"by": "person-profileid", "content": "text", "timestamp": "time"}
