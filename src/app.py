@@ -10,7 +10,7 @@ from flask_login import LoginManager, UserMixin, login_user, current_user, logou
 from flask_socketio import SocketIO
 
 from src.blueprints.chats.chat_routes import chat
-from src.s3 import save_to_s3, default_image_string
+from src.s3 import save_to_s3
 
 app = Flask(__name__)
 app.secret_key = 'drp26secretkey'
@@ -58,6 +58,7 @@ def profile_required(func):
         if r.status_code != 200:
             return redirect(create_profile_route)
         return func(*args, **kwargs)
+    wrapper.__name__ = func.__name__
     return wrapper
 
 
