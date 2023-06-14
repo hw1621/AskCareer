@@ -115,5 +115,5 @@ function getProfilePhoto(profileId) {
     }).then(function writeData(data) {
         var image_url = data['profilePhotoString'];
         return image_url;
-    }
+    })
 }
