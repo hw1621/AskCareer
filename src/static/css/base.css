@@ -12,12 +12,13 @@ body {
     top: 0;
     width: 100%;
     justify-content: space-between;
-    background-color: #eee;
     height: var(--header-height);
     align-items: center;
     padding: 0 3vw;
     z-index: 500;
+    box-shadow: #cccccc 0 0 5px;
 }
+
 .navbar-right {
     display: flex;
     align-items: stretch;
