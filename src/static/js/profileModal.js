@@ -108,15 +108,14 @@ function clearProfile() {
     document.getElementById('work-experience').innerHTML = ' ';
 }
 
-function getProfilePhoto(profileId) {
+async function getProfilePhoto(profileId) {
     console.log(profileId);
     const backend_url = 'https://drp26backend.herokuapp.com/profiles/' + profileId;
-    const url = await fetch(backend_url).then(function getJson(response) {
+    return fetch(backend_url).then(function getJson(response) {
         console.assert(response.ok, 'Response was not ok.')
         return response.json();
     }).then(function writeData(data) {
         var image_url = data['profilePhotoString'];
         return image_url;
     });
-    return url;
 }
