@@ -308,3 +308,8 @@ a:hover {
     transition: max-height 0.2s ease-out;
     font-size: 15px;
 }
+
+#empty-message {
+    text-align: center;
+    font-size: 15px;
+}
