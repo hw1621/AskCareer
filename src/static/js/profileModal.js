@@ -110,8 +110,8 @@ function clearProfile() {
 
 function getProfilePhoto(profileId) {
     console.log(profileId);
-    const url = 'https://drp26backend.herokuapp.com/profiles/' + profileId;
-    const url = await fetch(url).then(function getJson(response) {
+    const backend_url = 'https://drp26backend.herokuapp.com/profiles/' + profileId;
+    const url = await fetch(backend_url).then(function getJson(response) {
         console.assert(response.ok, 'Response was not ok.')
         return response.json();
     }).then(function writeData(data) {
