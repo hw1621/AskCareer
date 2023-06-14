@@ -1,9 +1,9 @@
 #title {
     text-align: left;
-    font-size: 48px;
+    font-size: 55px;
     margin-bottom: 3vh;
     margin-left: 3vh;
-    font-family: 'Tilt Prism', cursive;
+    font-family: 'Caveat', cursive;
 }
 
 #statement {
@@ -15,7 +15,15 @@
 }
 
 body {
-    background-color: #37517e
+    background: rgb(21,207,255);
+    background: -moz-radial-gradient(at left 70%, rgba(40,147,255,1) 0%, rgba(30,170,224,1) 25%, rgba(39,169,229,1) 37%, rgba(210,178,216,1) 100%);
+    background: -webkit-radial-gradient(at left 70%, rgba(40,147,255,1) 0%, rgba(30,170,224,1) 25%, rgba(39,169,229,1) 37%, rgba(210,178,216,1) 100%);
+    background: radial-gradient(at left 70%, rgba(40,147,255,1) 0%, rgba(30,160,224,1) 25%, rgba(39,169,229,1) 37%, rgba(210,178,216,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#15cfff",endColorstr="#b2ced2",GradientType=1);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .g_id_signin {
     display: flex;
@@ -43,5 +51,5 @@ body {
 }
 
 .text {
-    color: #FFFFFF
+    color: #FFFFFF;
 }
