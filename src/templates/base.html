@@ -28,7 +28,7 @@
             </a>
         </div>
         <div class="navbar-right">
-            {% if not current_user.is_authenticated %}
+            {% if current_user.is_authenticated %}
                 <div class="navbar-item dropdown">
                 <div class="dropbtn" id="chat-drop">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
