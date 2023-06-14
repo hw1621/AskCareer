@@ -20,7 +20,7 @@ function openChatBox() {
         updownSymbol.classList.toggle("bi-chevron-double-up");
         updownSymbol.classList.toggle("bi-chevron-double-down");
 
-        let content = modalBtn.nextElementSibling;
+        let content = document.getElementById("chat-content");
         if (content.style.display === "block") {
             modal.style.height = "5vh";
             content.style.display = "none";
