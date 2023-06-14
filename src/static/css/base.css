@@ -322,9 +322,8 @@ a:hover {
 }
 
 .profile-photo-in-chat {
-    margin: 2vh 0;
-    height: 20px;
-    width: 20px;
+    height: 30px;
+    width: 30px;
     background-size: cover;
     border-radius: 50%;
     display: inline-block;

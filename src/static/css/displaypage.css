@@ -11,14 +11,14 @@ p {
 }
 
 .profile-image {
-  margin: 2vh 0;
-  height: 100px;
-  width: 100px;
-  background-size: cover;
-  border-radius: 50%;
-  display: inline-block;
-  background-color: #222222;
-  opacity: 69%;
+    margin: 2vh 0;
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #222222;
+    opacity: 69%;
 }
 
 .profile-thumb {
