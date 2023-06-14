@@ -50,6 +50,7 @@ function openChatBox() {
 function loadChat(profile) {
     let encodeProfile = encodeURIComponent(profile);
     document.cookie = "currentChat=" + encodeProfile + ";" + "max-age=86400; path=/;"
+    console.log(document.cookie.toString())
     currentChat = profile;
     refreshChat();
     openChatBox();
