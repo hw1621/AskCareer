@@ -108,6 +108,7 @@ function clearProfile() {
 }
 
 function getProfilePhoto(profileId) {
+    console.log(profileId);
     const url = 'https://drp26backend.herokuapp.com/profiles/' + profileId;
     fetch(url).then(function getJson(response) {
         console.assert(response.ok, 'Response was not ok.')
