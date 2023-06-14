@@ -9,9 +9,22 @@ let socket = io();
 refreshNavBar();
 fetchOverview();
 
+if (getCookie('currentChat') == null) {
+    let currentChat = "";
+} else {
+    let currentChat = getCookie('currentChat');
+}
 
-let currentChat = "";
-
+function getCookie(currentChat) {
+    var cookieArr = document.cookie.split(";");
+    for (i = 0; i<cookieArr.length; i++) {
+        var cookiePair =cookieArr[i].split("=");
+        if(currentChat == cookiePair[0].trim()) {
+            return decodeURIComponent((cookiePair[1]))
+        }
+    }
+    return null;
+}
 function openChatBox() {
     if (currentChat !== "") {
         modalBtn.classList.toggle("active");
@@ -35,7 +48,9 @@ function openChatBox() {
 }
 
 function loadChat(profile) {
-    currentChat = profile;
+    let encodeProfile = encodeURIComponent(profile);
+    document.cookie = "currentChat=" + encodeProfile + ";" + "max-age=86400; path=/;"
+    let currentChat = profile;
     refreshChat();
     openChatBox();
 }
