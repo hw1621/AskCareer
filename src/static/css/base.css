@@ -312,4 +312,5 @@ a:hover {
 #empty-message {
     text-align: center;
     font-size: 15px;
+    padding: 0.5vh;
 }
