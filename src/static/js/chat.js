@@ -44,6 +44,7 @@ function loadChat(profile) {
             showProfile(profile);
         }
     }
+    document.getElementById("profile-photo-in-chat").src = getProfilePhoto(currentChat);
 }
 
 modalBtn.addEventListener("click", openChatBox);
