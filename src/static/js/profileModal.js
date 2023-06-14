@@ -100,6 +100,7 @@ function loadProfile(userId, _callback) {
         console.log(error);
     });
 }
+
 function clearProfile() {
     document.getElementById('profile-name').innerHTML = ' ';
     document.getElementById('profile-email').innerHTML = ' ';

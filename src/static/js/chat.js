@@ -44,7 +44,7 @@ function loadChat(profile) {
             showProfile(profile);
         }
     }
-    document.getElementById("profile-photo-in-chat").src = getProfilePhoto(currentChat);
+    document.getElementById("profile-photo-in-chat").src = "https://drp26profilephotos.s3.eu-west-2.amazonaws.com/" + profileId
 }
 
 modalBtn.addEventListener("click", openChatBox);
