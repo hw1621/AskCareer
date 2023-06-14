@@ -336,6 +336,7 @@ a:hover {
     display: inline-block;
     background-color: #222222;
     opacity: 69%;
+    margin: auto;
 }
 
 .profile-image {
