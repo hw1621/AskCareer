@@ -11,7 +11,7 @@ fetchOverview();
 
 
 let currentChat = "";
-if (currentChat = "") {
+if (currentChat === "") {
     modal.style.display="none";
 }
 
