@@ -321,10 +321,13 @@ a:hover {
 }
 
 .chat-header-left {
+    display: flex;
+    align-items: center;
     width: 15%;
     background-color: lightgray
 }
 .chat-header-right {
+    display: flex;
     width: 85%;
 }
 
