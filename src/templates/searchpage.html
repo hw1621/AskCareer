@@ -5,20 +5,42 @@
 {% endblock %}
 {% block body %}
     <h1>Welcome to our internship application platform</h1>
+{#    <form method="post">#}
+{#        <div class="row g-3" id="jobtitle-row">#}
+{#            <div class="col">#}
+{#                <input id="job-title" name="job-title" required type="text" class="form-control" placeholder="Job title" aria-label="Job title">#}
+{#            </div>#}
+{#            <div class="col">#}
+{#                <input id="company" name="job-company" required type="text" class="form-control" placeholder="Company" aria-label="Company">#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="input-group" id="job-description">#}
+{#            <textarea id="jd" name="job-summary" required class="form-control" placeholder="Please enter your job description." aria-label="With textarea"></textarea>#}
+{#        </div>#}
+{#        <div class="submit-row">#}
+{#            <button id="form-submit" type="submit" name="form-submit" class="btn btn-light">Get connected</button>#}
+{#        </div>#}
+{#    </form>#}
     <form method="post">
-        <div class="row g-3" id="jobtitle-row">
-            <div class="col">
-                <input id="job-title" name="job-title" required type="text" class="form-control" placeholder="Job title" aria-label="Job title">
+        <div class="row g-2" id="job-title-row">
+          <div class="col-md">
+            <div class="form-floating">
+              <input id="job-title" name="job-title" required type="text" class="form-control" placeholder="Job title">
+              <label for="job-title">Entry your job title: </label>
             </div>
-            <div class="col">
-                <input id="company" name="job-company" required type="text" class="form-control" placeholder="Company" aria-label="Company">
+          </div>
+          <div class="col-md">
+            <div class="form-floating">
+              <input id="company" name="job-company" required type="text" class="form-control" placeholder="Company">
+              <label for="job-company">Entry your job company: </label>
             </div>
+          </div>
         </div>
-        <div class="input-group" id="job-description">
-            <textarea id="jd" name="job-summary" required class="form-control" placeholder="Please enter your job description." aria-label="With textarea"></textarea>
+        <div class="input-group" id="job-description">#}
+            <textarea id="jd" name="job-summary" required class="form-control" placeholder="Please enter your job description." aria-label="With textarea"></textarea>#}
         </div>
-        <div class="submit-row">
-            <button id="form-submit" type="submit" name="form-submit" class="btn btn-light">Get connected</button>
+        <div class="submit-row">#}
+            <button id="form-submit" type="submit" name="form-submit" class="btn btn-light">Get connected</button>#}
         </div>
     </form>
 {% endblock %}
