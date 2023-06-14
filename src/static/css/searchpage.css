@@ -19,11 +19,9 @@ form {
     opacity: 69%;
 }
 
-/*#job-description {*/
-/*    margin-top: 1vh;*/
-/*    width: 100%;*/
-/*    height: 40vh*/
-/*}*/
+#job-description {
+    margin-top: 1.5vh;
+}
 
 .submit-row {
     display: flex;
