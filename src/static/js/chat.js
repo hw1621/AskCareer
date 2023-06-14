@@ -13,6 +13,7 @@ let currentChat = "";
 
 if (getCookie('currentChat') !== null) {
     currentChat = getCookie('currentChat');
+    console.log(currentChat);
 }
 
 function getCookie(currentChat) {
