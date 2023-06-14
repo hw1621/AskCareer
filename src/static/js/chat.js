@@ -39,7 +39,11 @@ function loadChat(profile) {
     refreshChat();
     openChatBox();
     console.log(currentChat);
-    document.getElementById("chat-header-left").onclick = () => showProfile(profile);
+    document.getElementById("chat-header-left").onclick = () => {
+        if(profileModal.style.display !== "block") {
+            showProfile(profile);
+        }
+    }
 }
 
 modalBtn.addEventListener("click", openChatBox);
