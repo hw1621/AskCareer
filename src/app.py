@@ -199,6 +199,10 @@ def setting():
         requests.post(backend_url, json={'profile_id': profile_id, 'settings': settings})
         return render_template("settings.html", settings=settings)
 
+# @app.route('/test')
+# def test_page():
+#     return render_template("searchpage.html")
+
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
