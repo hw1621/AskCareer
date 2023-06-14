@@ -152,4 +152,9 @@
         </div>
         <script src="{{ url_for('static', filename='js/editprofile.js') }}"></script>
     </form>
+    {% if not new_profile %}
+        <script>
+            fillProfile();
+        </script>
+    {% endif %}
 {% endblock %}
