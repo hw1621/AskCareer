@@ -188,7 +188,7 @@ def setting():
 
 # @app.route('/test')
 # def test_page():
-#     return render_template("searchpage.html")
+#     return render_template("settings.html", settings={})
 
 
 if __name__ == '__main__':

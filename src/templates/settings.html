@@ -7,12 +7,12 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Settings</h1>
     <form method="post">
+        <h1>Settings</h1>
         <div class="settings">
             <div class="form-check form-switch">
                 <input class="form-check-input" name="isPause" type="checkbox" role="switch" id="flexSwitchCheckDefault" {% if settings['isPause'] %}checked{% endif %}>
-                <label class="form-check-label" for="flexSwitchCheckDefault">I don't want to be searched</label>
+                <label class="form-check-label" for="flexSwitchCheckDefault">I don't want to be searched for now</label>
             </div>
         </div>
         <div id="submit-row" class="submit-row">
