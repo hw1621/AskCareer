@@ -33,20 +33,6 @@ cors = CORS(
     }
 )
 
-s3_client = boto3.client(
-    's3',
-    aws_access_key_id='AKIAQXS56FU5AWVPF6UW',
-    aws_secret_access_key='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',
-    region_name='eu-west-2'
-)
-
-s3_resource = boto3.resource(
-    's3',
-    aws_access_key_id='AKIAQXS56FU5AWVPF6UW',
-    aws_secret_access_key='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',
-    region_name='eu-west-2'
-)
-
 CLIENT_ID = '1067444981581-lmgjcqdqb7i9g17ai0fhdh6nind11ljo.apps.googleusercontent.com'
 
 create_profile_route = "/create-profile"
