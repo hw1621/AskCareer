@@ -11,6 +11,10 @@ fetchOverview();
 
 
 let currentChat = "";
+if (currentChat = "") {
+    modal.style.display="none";
+}
+
 
 function openChatBox() {
     if (currentChat !== "") {
