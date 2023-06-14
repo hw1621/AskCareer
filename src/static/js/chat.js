@@ -141,4 +141,5 @@ function sendMsg() {
             }
         });
     }
+    fetchOverview();
 }
