@@ -54,8 +54,7 @@ function loadChatOverview(data) {
         chatOverview.innerHTML = "";
     }
     for (const i of data["overview"]) {
-        let htmlCode = `<div class=\"single-chat-overview\" onclick=\"loadChat(\"${i["otherPerson"]}\")\">\n` +
-                                    "<div class=\"chat-overview-head\">\n" +
+        let htmlCode =      "<div class=\"chat-overview-head\">\n" +
                                         "<div class=\"chat-overview-img-container\">\n" +
                                             `<img class=\"chat-overview-img\" alt=\"\" src=\"${i["otherPersonImage"]}\"/>\n` +
                                         "</div>\n" +
@@ -66,11 +65,11 @@ function loadChatOverview(data) {
                                     "</div>\n" +
                                     "<div class=\"chat-overview-notifications\">\n" +
                                         `<div class=\"chat-overview-notification-badge\">${i["unread"]}</div>\n` +
-                                    "</div>\n" +
-                                "</div>";
+                                    "</div>\n"
         let newDiv = document.createElement("div");
+        newDiv.classList.add("single-chat-overview");
         newDiv.onclick = function() {loadChat(i["otherPerson"])};
-        newDiv.innerHTML = i["otherPersonName"] + ": " + i["unread"];
+        newDiv.innerHTML = htmlCode;
         chatOverview.insertBefore(newDiv, null);
     }
 }
