@@ -320,3 +320,14 @@ a:hover {
 .chat-header-right {
     width: 80%;
 }
+
+.profile-photo-in-chat {
+    margin: 2vh 0;
+    height: 20px;
+    width: 20px;
+    background-size: cover;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #222222;
+    opacity: 69%;
+}
