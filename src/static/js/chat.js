@@ -38,6 +38,8 @@ function loadChat(profile) {
     currentChat = profile;
     refreshChat();
     openChatBox();
+    console.log(currentChat);
+    document.getElementById("chat-header-left").onclick = () => showProfile(profile);
 }
 
 modalBtn.addEventListener("click", openChatBox);
