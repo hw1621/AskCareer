@@ -17,6 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/displaypage.css') }}" rel="stylesheet">
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
@@ -117,12 +118,19 @@
 {% block javascripts %}{% endblock %}
 {% if current_user.is_authenticated %}
 <div id="chat-modal">
-        <button type="button" id="chat-modal-btn" class="chat-collapsible">
-            <i class="bi bi-chevron-double-up" id="chat-modal-updown-symbol"></i>
-            <span>&nbsp;</span>
-            <span id="chat-name">Chat</span>
-        </button>
-        <div class="chat-content">
+    <div class="chat-header-container">
+        <div class="chat-header-left" id="chat-header-left">
+            <img src="" class="profile-photo-in-chat" id="profile-photo-in-chat">
+        </div>
+        <div class="chat-header-right">
+            <button type="button" id="chat-modal-btn" class="chat-collapsible">
+                <i class="bi bi-chevron-double-up" id="chat-modal-updown-symbol"></i>
+                <span>&nbsp;</span>
+                <span id="chat-name">Chat</span>
+            </button>
+        </div>
+    </div>
+        <div class="chat-content" id="chat-content">
             <div class="chat-content-inside">
                 <div class="chat-message-div" id="chat-message-div">
                 </div>

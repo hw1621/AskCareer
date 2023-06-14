@@ -10,6 +10,10 @@ refreshNavBar();
 fetchOverview();
 
 let currentChat = "";
+if (currentChat === "") {
+    modal.style.display="none";
+}
+
 
 if (getCookie('currentChat') !== null) {
     currentChat = getCookie('currentChat');
@@ -57,7 +61,7 @@ function openChatBox() {
         updownSymbol.classList.toggle("bi-chevron-double-up");
         updownSymbol.classList.toggle("bi-chevron-double-down");
 
-        let content = modalBtn.nextElementSibling;
+        let content = document.getElementById("chat-content");
         if (content.style.display === "block") {
             modal.style.height = "5vh";
             content.style.display = "none";
@@ -78,6 +82,16 @@ function loadChat(profile) {
     currentChat = profile;
     refreshChat();
     openChatBox();
+    console.log(currentChat);
+    document.getElementById("chat-header-left").onclick = () => {
+        if(profileModal.style.display !== "block") {
+            showProfile(profile);
+        }
+    }
+    getProfilePhoto(profile).then((image_url) => {
+        document.getElementById("profile-photo-in-chat").src = image_url;
+        modal.style.display = "block";
+    });
 }
 
 function displayMessage(message) {

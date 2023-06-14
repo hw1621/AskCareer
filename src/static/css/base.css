@@ -314,3 +314,25 @@ a:hover {
     font-size: 15px;
     padding: 0.5vh;
 }
+
+.chat-header-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.chat-header-left {
+    width: 20%;
+}
+.chat-header-right {
+    width: 80%;
+}
+
+.profile-photo-in-chat {
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #222222;
+    opacity: 69%;
+}

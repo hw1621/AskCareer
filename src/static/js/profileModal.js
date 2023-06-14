@@ -100,9 +100,22 @@ function loadProfile(userId, _callback) {
         console.log(error);
     });
 }
+
 function clearProfile() {
     document.getElementById('profile-name').innerHTML = ' ';
     document.getElementById('profile-email').innerHTML = ' ';
     document.getElementById('education').innerHTML = ' ';
     document.getElementById('work-experience').innerHTML = ' ';
+}
+
+async function getProfilePhoto(profileId) {
+    console.log(profileId);
+    const backend_url = 'https://drp26backend.herokuapp.com/profiles/' + profileId;
+    return fetch(backend_url).then(function getJson(response) {
+        console.assert(response.ok, 'Response was not ok.')
+        return response.json();
+    }).then(function writeData(data) {
+        var image_url = data['profilePhotoString'];
+        return image_url;
+    });
 }
