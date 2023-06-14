@@ -20,7 +20,7 @@ function getCookie(currentChat) {
     var cookieArr = document.cookie.split(";");
     for (i = 0; i<cookieArr.length; i++) {
         var cookiePair =cookieArr[i].split("=");
-        if(currentChat == cookiePair[0].trim()) {
+        if(currentChat === cookiePair[0].trim()) {
             return decodeURIComponent((cookiePair[1]))
         }
     }
