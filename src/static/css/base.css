@@ -30,7 +30,7 @@ a {
 }
 
 a:hover {
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 .classic-link {
@@ -94,6 +94,10 @@ a:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     z-index: 1;
     align-self: stretch;
+}
+
+.dropdown-content.dropdown-content-long {
+    min-width: 300px;
 }
 
 .dropdown-content a {
@@ -351,4 +355,67 @@ a:hover {
     display: inline-block;
     background-color: #222222;
     opacity: 69%;
+}
+
+.single-chat-overview {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 5%;
+}
+.single-chat-overview:hover {
+    background-color: #f1f1f1;
+    opacity:0.8;
+}
+.chat-overview-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.chat-overview-head .chat-overview-img-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20%;
+}
+.chat-overview-img-container .chat-overview-img {
+    background-color: #1F1F19;
+    border-radius: 60%;
+    height: 40px;
+    width: 40px;
+    min-height: 40px;
+    min-width: 40px;
+}
+.chat-overview-head .chat-overview-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.chat-overview-text .chat-overview-name {
+    font-size: 18px;
+    font-weight: 400;
+}
+.chat-overview-text .chat-overview-last-msg {
+    font-size: 12px;
+    opacity: 80%;
+}
+
+.single-chat-overview .chat-overview-notifications {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+.chat-overview-notifications .chat-overview-notification-badge {
+    background-color: #2978d5;
+    border-radius: 60%;
+    height: 15px;
+    width: 15px;
+    font-size: 10px;
+    color: white;
+    min-height: 15px;
+    min-width: 15px;
+    text-anchor: middle;
+    text-align: center;
 }

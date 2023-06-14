@@ -141,20 +141,7 @@ function refreshNavBar() {
 }
 
 function fetchOverview() {
-    socket.emit('request_chats_overview', {}, (data) => {
-        let chatOverview = document.getElementById("chat-drop-content");
-        if (data["overview"].length !== 0) {
-            chatOverview.innerHTML = "";
-        }
-        for (const i of data["overview"]) {
-            let newDiv = document.createElement("div");
-            let newLink = document.createElement("a");
-            newDiv.onclick = function() {loadChat(i["otherPerson"])};
-            newDiv.innerText = i["otherPersonName"] + ": " + i["unread"];
-            newLink.insertBefore(newDiv, null);
-            chatOverview.insertBefore(newLink, null);
-        }
-    });
+    socket.emit('request_chats_overview', {}, loadChatOverview);
 }
 
 function sendMsg() {

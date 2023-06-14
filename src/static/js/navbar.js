@@ -47,3 +47,30 @@ function numberUnreadMessages(unread) {
         badge.style.display="block";
     }
 }
+
+function loadChatOverview(data) {
+    let chatOverview = document.getElementById("chat-drop-content");
+    if (data["overview"].length !== 0) {
+        chatOverview.innerHTML = "";
+    }
+    for (const i of data["overview"]) {
+        let htmlCode = `<div class=\"single-chat-overview\" onclick=\"loadChat(\"${i["otherPerson"]}\")\">\n` +
+                                    "<div class=\"chat-overview-head\">\n" +
+                                        "<div class=\"chat-overview-img-container\">\n" +
+                                            `<img class=\"chat-overview-img\" alt=\"\" src=\"${i["otherPersonImage"]}\"/>\n` +
+                                        "</div>\n" +
+                                        "<div class=\"chat-overview-text\">\n" +
+                                            `<div class=\"chat-overview-name\">${i["otherPersonName"]}</div>\n` +
+                                            `<div class=\"chat-overview-last-msg\">${i["last"]}</div>\n` +
+                                        "</div>\n" +
+                                    "</div>\n" +
+                                    "<div class=\"chat-overview-notifications\">\n" +
+                                        `<div class=\"chat-overview-notification-badge\">${i["unread"]}</div>\n` +
+                                    "</div>\n" +
+                                "</div>";
+        let newDiv = document.createElement("div");
+        newDiv.onclick = function() {loadChat(i["otherPerson"])};
+        newDiv.innerHTML = i["otherPersonName"] + ": " + i["unread"];
+        chatOverview.insertBefore(newDiv, null);
+    }
+}
