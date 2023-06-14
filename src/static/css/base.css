@@ -321,10 +321,11 @@ a:hover {
 }
 
 .chat-header-left {
-    width: 20%;
+    width: 15%;
+    background-color: lightgray
 }
 .chat-header-right {
-    width: 80%;
+    width: 85%;
 }
 
 .profile-photo-in-chat {
