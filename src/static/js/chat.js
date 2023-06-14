@@ -48,7 +48,8 @@ function loadChat(profile) {
             showProfile(profile);
         }
     }
-    document.getElementById("profile-photo-in-chat").src = "https://drp26profilephotos.s3.eu-west-2.amazonaws.com/" + profile
+    document.getElementById("profile-photo-in-chat").src = "https://drp26profilephotos.s3.eu-west-2.amazonaws.com/" + profile;
+    modal.style.display = "block";
 }
 
 modalBtn.addEventListener("click", openChatBox);
