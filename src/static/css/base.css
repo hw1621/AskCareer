@@ -313,3 +313,10 @@ a:hover {
     display: flex;
     flex-direction: row;
 }
+
+.chat-header-left {
+    width: 30%;
+}
+.chat-header-left {
+    width: 70%;
+}
