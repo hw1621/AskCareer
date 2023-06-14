@@ -6,7 +6,7 @@ import requests
 import json
 
 from flask_cors import CORS
-from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user
+from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
 from flask_socketio import SocketIO
 
 from src.blueprints.chats.chat_routes import chat
@@ -49,6 +49,17 @@ s3_resource = boto3.resource(
 
 CLIENT_ID = '1067444981581-lmgjcqdqb7i9g17ai0fhdh6nind11ljo.apps.googleusercontent.com'
 
+create_profile_route = "/create-profile"
+
+
+def profile_required(func):
+    def wrapper(*args, **kwargs):
+        r = requests.get(f"https://drp26backend.herokuapp.com/profiles/{current_user.profile_id}")
+        if r.status_code != 200:
+            return redirect(create_profile_route)
+        return func(*args, **kwargs)
+    return wrapper
+
 
 class User(UserMixin):
     def __init__(self, uid, profile_id):
@@ -74,7 +85,7 @@ def index():
         return render_template('home.html')
     r = requests.get(f"https://drp26backend.herokuapp.com/profiles/{current_user.profile_id}")
     if r.status_code != 200:
-        return render_template('profile.html')
+        return redirect(create_profile_route)
     if request.method == 'POST':
         form = request.form.to_dict()
         try:
@@ -116,47 +127,64 @@ def signin():
         return redirect("https://drp26.herokuapp.com/")
 
 
+def process_profile(form_data):
+    profile_info = dict(form_data.to_dict())
+    image_url = " "
+    if 'profile-photo' in request.files and request.files['profile-photo'] is not None and \
+            request.files['profile-photo'].filename != '':
+        image = request.files['profile-photo']
+
+        # upload to S3
+        bucket_name = 'drp26profilephotos'
+        image_url = save_to_s3(image, bucket_name, str(current_user.profile_id))
+
+    profile_info['profilePhotoString'] = image_url
+    for i in (
+        ['title', 'company', 'start-date', 'end-date', 'summary', 'school-name',
+         'degree', 'start-date-edu', 'end-date-edu']):
+        profile_info[i] = form_data.getlist(i)
+    requests.post(
+        "https://drp26backend.herokuapp.com/uploadform",
+        json={"profile-info": profile_info, "profile-id": str(current_user.profile_id)}
+    )
+
+
+@app.route(create_profile_route, methods=['GET', 'POST'])
+@login_required
+def create_profile():
+    r = requests.get(f"https://drp26backend.herokuapp.com/profiles/{current_user.profile_id}")
+    if r.status_code == 200:
+        return redirect('/edit-profile')
+    if request.method == "POST":
+        process_profile(request.form)
+        return redirect('/')
+    else:
+        return render_template('profile.html', new_profile=True)
+
+
 @app.route('/edit-profile', methods=['GET', 'POST'])
+@login_required
+@profile_required
 def edit_profile():
     if request.method == "POST":
-        form_data = request.form
-        profile_info = dict(form_data.to_dict())
-        print(request.files)
-        image_url = " "
-        if 'profile-photo' in request.files and request.files['profile-photo'] is not None and \
-                request.files['profile-photo'].filename != '':
-            image = request.files['profile-photo']
-
-            # upload to S3
-            bucket_name = 'drp26profilephotos'
-            image_url = save_to_s3(image, bucket_name, str(current_user.profile_id))
-            # return 'Image uploaded to S3 successfully, url = ' + image_url
-
-        profile_info['profilePhotoString'] = image_url
-        for i in (
-                ['title', 'company', 'start-date', 'end-date', 'summary', 'school-name',
-                 'degree', 'start-date-edu', 'end-date-edu']):
-            profile_info[i] = form_data.getlist(i)
-        requests.post(
-            "https://drp26backend.herokuapp.com/uploadform",
-            json={"profile-info": profile_info, "profile-id": str(current_user.profile_id)}
-        )
+        process_profile(request.form)
         return redirect('/edit-profile')
     else:
-        return render_template('profile.html')
+        return render_template('profile.html', new_profile=False)
 
 
 @app.route('/signout')
+@login_required
+@profile_required
 def signout():
     logout_user()
     return redirect('https://drp26.herokuapp.com/')
 
 
 @app.route('/settings', methods=['GET', 'POST'])
+@login_required
+@profile_required
 def setting():
-    r = requests.get(f"https://drp26backend.herokuapp.com/profiles/{current_user.profile_id}")
-    if r.status_code != 200:
-        return redirect("/")
     if request.method == 'GET':
         content = {'user_id': str(current_user.id), 'profile_id': str(current_user.profile_id)}
         r = requests.post("https://drp26backend.herokuapp.com/get_settings", json=content)
@@ -165,10 +193,11 @@ def setting():
         settings = request.form.to_dict()
         # Currently consider the data received is in a form, need to modify later based on frontend
         backend_url = "https://drp26backend.herokuapp.com/save_settings"
-        profileId = str(current_user.profile_id)
+        profile_id = str(current_user.profile_id)
         print(settings)
-        response = requests.post(backend_url, json={'profileId': profileId, 'settings': settings})
+        requests.post(backend_url, json={'profile_id': profile_id, 'settings': settings})
         return render_template("settings.html", settings=settings)
+
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
