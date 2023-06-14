@@ -111,11 +111,12 @@ function clearProfile() {
 function getProfilePhoto(profileId) {
     console.log(profileId);
     const url = 'https://drp26backend.herokuapp.com/profiles/' + profileId;
-    fetch(url).then(function getJson(response) {
+    const url = await fetch(url).then(function getJson(response) {
         console.assert(response.ok, 'Response was not ok.')
         return response.json();
     }).then(function writeData(data) {
         var image_url = data['profilePhotoString'];
         return image_url;
-    })
+    });
+    return url;
 }
