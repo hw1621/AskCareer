@@ -105,11 +105,7 @@ function refreshChat() {
 
 function refreshNavBar() {
     socket.emit('request_unread', {}, (data) => {
-        let unread = data["unread"];
-        let navbarUnread = document.getElementById("navbar-unread");
-        if (unread === 0) navbarUnread.style.display = "none";
-        else navbarUnread.style.display = "block";
-        navbarUnread.innerHTML = unread;
+        numberUnreadMessages(data["unread"]);
     });
 }
 

@@ -17,7 +17,7 @@ function loadProfile(userId, _callback) {
         console.assert(response.ok, 'Response was not ok.')
         return response.json();
     }).then(function writeData(data) {
-        var image_url = data['profilePhotoString'];
+        let image_url = data['profilePhotoString'];
         console.log(image_url);
         document.getElementById('profile-image').src = image_url;
         document.getElementById('profile-name').innerHTML = data['name'];

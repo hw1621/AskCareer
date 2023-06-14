@@ -35,3 +35,15 @@ window.addEventListener("click",  function (event) {
         }
     }
 });
+
+function numberUnreadMessages(unread) {
+    let badge = document.getElementById("navbar-msg-badge");
+    let num = document.getElementById("navbar-badge-num-unread")
+    if (unread === 0) {
+        badge.style.display="none";
+    } else {
+        console.log("unread: " + unread);
+        num.textContent = unread;
+        badge.style.display="block";
+    }
+}
