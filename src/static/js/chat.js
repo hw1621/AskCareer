@@ -9,10 +9,10 @@ let socket = io();
 refreshNavBar();
 fetchOverview();
 
-if (getCookie('currentChat') == null) {
-    let currentChat = "";
-} else {
-    let currentChat = getCookie('currentChat');
+let currentChat = "";
+
+if (getCookie('currentChat') !== null) {
+    currentChat = getCookie('currentChat');
 }
 
 function getCookie(currentChat) {
@@ -50,7 +50,7 @@ function openChatBox() {
 function loadChat(profile) {
     let encodeProfile = encodeURIComponent(profile);
     document.cookie = "currentChat=" + encodeProfile + ";" + "max-age=86400; path=/;"
-    let currentChat = profile;
+    currentChat = profile;
     refreshChat();
     openChatBox();
 }
