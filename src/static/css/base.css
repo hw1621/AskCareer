@@ -315,8 +315,8 @@ a:hover {
 }
 
 .chat-header-left {
-    width: 30%;
+    width: 20%;
 }
-.chat-header-left {
-    width: 70%;
+.chat-header-right {
+    width: 80%;
 }
