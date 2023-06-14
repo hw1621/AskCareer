@@ -1,16 +1,18 @@
+import os
+
 import boto3
 
 client = boto3.client(
     's3',
-    aws_access_key_id='AKIAQXS56FU5AWVPF6UW',
-    aws_secret_access_key='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',
+    aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+    aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
     region_name='eu-west-2'
 )
 
 resource = boto3.resource(
     's3',
-    aws_access_key_id='AKIAQXS56FU5AWVPF6UW',
-    aws_secret_access_key='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',
+    aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+    aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
     region_name='eu-west-2'
 )
 
