@@ -17,6 +17,7 @@ body {
     padding: 0 3vw;
     z-index: 500;
     box-shadow: #cccccc 0 0 5px;
+    background-color: #eee;
 }
 
 .navbar-right {
