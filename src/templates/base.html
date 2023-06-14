@@ -80,11 +80,18 @@
 {% block javascripts %}{% endblock %}
 {% if current_user.is_authenticated %}
 <div id="chat-modal">
-        <button type="button" id="chat-modal-btn" class="chat-collapsible">
-            <i class="bi bi-chevron-double-up" id="chat-modal-updown-symbol"></i>
-            <span>&nbsp;</span>
-            <span id="chat-name">Chat</span>
-        </button>
+    <div class="chat-header-container">
+        <div class="chat-header-left">
+
+        </div>
+        <div class="chat-header-right">
+            <button type="button" id="chat-modal-btn" class="chat-collapsible">
+                <i class="bi bi-chevron-double-up" id="chat-modal-updown-symbol"></i>
+                <span>&nbsp;</span>
+                <span id="chat-name">Chat</span>
+            </button>
+        </div>
+    </div>
         <div class="chat-content">
             <div class="chat-content-inside">
                 <div class="chat-message-div" id="chat-message-div">

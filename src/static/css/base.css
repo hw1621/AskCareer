@@ -308,3 +308,8 @@ a:hover {
     transition: max-height 0.2s ease-out;
     font-size: 15px;
 }
+
+.chat-header-container {
+    display: flex;
+    flex-direction: row;
+}
