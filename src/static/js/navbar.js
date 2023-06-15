@@ -54,13 +54,17 @@ function loadChatOverview(data) {
         chatOverview.innerHTML = "";
     }
     for (const i of data["overview"]) {
+        let message = i["last"]["content"];
+        if (message.length > 15) {
+            message = message.substring(0, 15) + "...";
+        }
         let htmlCode =      "<div class=\"chat-overview-head\">\n" +
                                         "<div class=\"chat-overview-img-container\">\n" +
                                             `<img class=\"chat-overview-img\" alt=\"\" src=\"${i["otherPersonImage"]}\"/>\n` +
                                         "</div>\n" +
                                         "<div class=\"chat-overview-text\">\n" +
                                             `<div class=\"chat-overview-name\">${i["otherPersonName"]}</div>\n` +
-                                            `<div class=\"chat-overview-last-msg\">${i["last"]}</div>\n` +
+                                            `<div class=\"chat-overview-last-msg\">${message}</div>\n` +
                                         "</div>\n" +
                                     "</div>\n" +
                                     "<div class=\"chat-overview-notifications\">\n" +
