@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 
 import boto3
 
@@ -23,16 +24,17 @@ bucket_url = "https://drp26profilephotos.s3.eu-west-2.amazonaws.com/"
 def save_to_s3(file, bucket_name, key):
     try:
         file.seek(0)
+        extension = file.filename.split('.')[-1]
         client.put_object(
             Body=file.read(),
             Bucket=bucket_name,
-            Key=key,
+            Key=f"{key}.{extension}",
             ACL='public-read'
         )
     except Exception as e:
         print("Exception thrown: ", e)
         return e
-    return bucket_url + key
+    return f"{bucket_url}{key}.{extension}?{int(datetime.now().timestamp() * 1000)}"
 
 
 if __name__ == "__main__":
