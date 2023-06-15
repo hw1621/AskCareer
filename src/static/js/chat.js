@@ -10,14 +10,12 @@ refreshNavBar();
 fetchOverview();
 
 let currentChat = "";
-if (currentChat === "") {
-    modal.style.display="none";
-}
-
-
 if (getCookie('currentChat') !== null) {
     currentChat = getCookie('currentChat');
     refreshChat();
+}
+if (currentChat === "") {
+    modal.style.display="none";
 }
 
 modalBtn.addEventListener("click", openChatBox);
