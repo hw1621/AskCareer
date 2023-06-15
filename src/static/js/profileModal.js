@@ -119,3 +119,11 @@ async function getProfilePhoto(profileId) {
         return image_url;
     });
 }
+
+function loadImage(event) {
+    image = document.getElementById("edit-profile-image");
+    image.src = createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+}
