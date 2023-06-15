@@ -199,6 +199,7 @@ a:hover {
 #send-box-text {
     width: 100%;
     border-width: thin;
+    border-radius: 20px;
 }
 
 .msg-field {
