@@ -436,3 +436,12 @@ a:hover {
     text-anchor: middle;
     text-align: center;
 }
+
+.send-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.send-btn {
+    width: 20%;
+}
