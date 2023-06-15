@@ -124,6 +124,6 @@ function loadImage(event) {
     image = document.getElementById("edit-profile-image");
     image.src = URL.createObjectURL(event.target.files[0]);
     image.onload = function() {
-      URL.revokeObjectURL(output.src) // free memory
+      URL.revokeObjectURL(image.src) // free memory
     }
 }
