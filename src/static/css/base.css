@@ -440,8 +440,10 @@ a:hover {
 .send-box {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly
 }
 
 .send-btn {
-    width: 20%;
+    width: 100%;
+    height: 100%;
 }
