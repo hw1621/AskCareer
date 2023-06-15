@@ -15,10 +15,6 @@ form {
     width: 60%;
 }
 
-#job-title, #company, #jd, #form-submit{
-    opacity: 69%;
-}
-
 #job-description {
     margin-top: 3vh;
 }

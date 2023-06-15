@@ -18,19 +18,19 @@ form {
 #personal-info {
     margin-top: 1.5vh;
     padding-top: 1.5vh;
-    border-top: 2px solid #cccccc;
+    border-top: 2px solid white;
 }
 
 .education-entry {
     margin-top: 1.5vh;
     padding-top: 1.5vh;
-    border-top: 2px solid #cccccc;
+    border-top: 2px solid white;
 }
 
 #check {
     margin-top: 1.5vh;
     padding-top: 1.5vh;
-    border-top: 2px solid #cccccc;
+    border-top: 2px solid white;
 }
 
 .personal-info-entry {
@@ -58,7 +58,7 @@ form {
 .work-experience-entry {
     margin-top: 1.5vh;
     padding-top: 1.5vh;
-    border-top: 2px solid #cccccc;
+    border-top: 2px solid white;
 }
 
 .submit-row {
@@ -70,4 +70,8 @@ form {
 
 .submit-row-btn {
     margin: 0 1vw;
+}
+
+button {
+    background-color: white;
 }
