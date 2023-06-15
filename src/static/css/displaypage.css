@@ -10,11 +10,16 @@ p {
     margin: 8vh 6vw;
 }
 
+a.profile-thumb:hover {
+    opacity: 0.9;
+    background-color: #e5e2e8;
+}
+
 
 .profile-thumb {
     display: flex;
     flex-direction: row;
-    background-color: #e2e3e5;
+    background-color: #efefef;
     width: 50%;
     margin: 5vh 6vw;
     padding: 1vh 1.5vw;

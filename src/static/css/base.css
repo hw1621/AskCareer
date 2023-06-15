@@ -240,7 +240,7 @@ a:hover {
 .dialog-content {
     background-color: #fefefe;
     border: 1px solid #888;
-    margin: 10% 40vw 10% auto;
+    margin: 20vh auto 20vh auto;
     width: 40%; /* Could be more or less, depending on screen size */
     max-height: 70vh;
     position: static;
