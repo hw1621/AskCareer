@@ -199,7 +199,7 @@ a:hover {
 #send-box-text {
     width: 100%;
     border-width: thin;
-    border-radius: 15px;
+    border-radius: 12px;
 }
 
 .msg-field {
@@ -442,7 +442,7 @@ a:hover {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: gray;
+    background-color: #d4d2d2;
 }
 
 .send-btn {
