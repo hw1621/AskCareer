@@ -13,6 +13,10 @@ let currentChat = "";
 if (getCookie('currentChat') !== null) {
     currentChat = getCookie('currentChat');
     refreshChat();
+    getProfilePhoto(currentChat).then((image_url) => {
+        document.getElementById("profile-photo-in-chat").src = image_url;
+        modal.style.display = "block";
+    });
 }
 if (currentChat === "") {
     modal.style.display="none";
