@@ -194,12 +194,17 @@ a:hover {
     position: absolute;
     bottom: 0;
     height: 2rem;
-    background-color: #eee;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #d4d2d2;
 }
+
 #send-box-text {
     width: 100%;
     border-width: thin;
     border-radius: 12px;
+    padding-left: 10px;
 }
 
 .msg-field {
@@ -438,12 +443,6 @@ a:hover {
     text-align: center;
 }
 
-.send-box {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    background-color: #d4d2d2;
-}
 
 .send-btn {
     width: 100%;
