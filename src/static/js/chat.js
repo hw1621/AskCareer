@@ -29,7 +29,14 @@ if (currentChat === "") {
     modal.style.display="none";
 }
 
-modalBtn.addEventListener("click", openChatBox);
+modalBtn.addEventListener(
+    "click", (event) => {
+        let profileEl = document.getElementById("profile-photo-in-chat");
+        if (!profileEl.contains(event.target)) {
+            openChatBox();
+        }
+    }
+);
 
 socket.on('connect', () => {
     console.log('socket connected');

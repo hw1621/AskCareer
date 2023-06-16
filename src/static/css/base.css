@@ -158,7 +158,7 @@ a:hover {
     flex-direction: row;
     justify-content: space-between;
     background-color: lightgray;
-    height: 100%;
+    height: 5vh;
 }
 .chat-header-container:hover {
     background-color: #ccc;
