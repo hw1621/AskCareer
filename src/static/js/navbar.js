@@ -79,7 +79,10 @@ function loadChatOverview(data) {
     }
 }
 
-let myProfileId = metas.namedItem("user_profile_id").content;
+let myProfileId = document
+    .getElementsByTagName('meta')
+    .namedItem("user_profile_id")
+    .content;
 const backend_url = 'https://drp26backend.herokuapp.com/profiles/' + myProfileId;
 fetch(backend_url).then(function getJson(response) {
     console.assert(response.ok, 'Response was not ok.');
