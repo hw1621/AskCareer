@@ -13,7 +13,7 @@ let currentChat = "";
 if (getCookie('currentChat') !== null) {
     currentChat = getCookie('currentChat');
     refreshChat();
-    document.getElementById("chat-header-left").onclick = () => {
+    document.getElementById("profile-photo-in-chat").onclick = () => {
         if(profileModal.style.display !== "block") {
             showProfile(currentChat);
         }
@@ -92,7 +92,7 @@ function loadChat(profile) {
     refreshChat();
     openChatBox();
     console.log(currentChat);
-    document.getElementById("chat-header-left").onclick = () => {
+    document.getElementById("profile-photo-in-chat").onclick = () => {
         if(profileModal.style.display !== "block") {
             showProfile(profile);
         }

@@ -55,11 +55,6 @@ a:hover {
     color: #e5c7ca;
 }
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .chat-collapsible:hover {
-    background-color: #ccc;
-}
-
 /* Style the collapsible content. Note: hidden by default */
 .chat-content {
     height: 100%;
@@ -345,6 +340,10 @@ a:hover {
 .chat-header-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+}
+.chat-header-container:hover {
+    background-color: #ccc;
 }
 
 .chat-header-left {
