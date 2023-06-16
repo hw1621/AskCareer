@@ -138,7 +138,7 @@ function refreshChat() {
         return response.json();
     }).then(function(profileData) {
         let name = profileData["name"];
-        document.getElementById("chat-name").innerHTML = "Chat: " + name;
+        document.getElementById("chat-name").innerHTML = name;
     }).catch((err) => {console.log(err);});
     readChat((data) => {
         console.log(data);
