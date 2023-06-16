@@ -21,6 +21,8 @@ if (getCookie('currentChat') !== null) {
     getProfilePhoto(currentChat).then((image_url) => {
         document.getElementById("profile-photo-in-chat").src = image_url;
         modal.style.display = "block";
+    }).catch((error) => {
+        console.log(error);
     });
 }
 if (currentChat === "") {
@@ -51,9 +53,9 @@ msgBox.addEventListener("keydown", function(e) {
 });
 
 function getCookie(currentChat) {
-    var cookieArr = document.cookie.split(";");
-    for (i = 0; i<cookieArr.length; i++) {
-        var cookiePair =cookieArr[i].split("=");
+    let cookieArr = document.cookie.split(";");
+    for (const element of cookieArr) {
+        let cookiePair = element.split("=");
         if(currentChat === cookiePair[0].trim()) {
             return decodeURIComponent((cookiePair[1]))
         }
@@ -98,7 +100,7 @@ function loadChat(profile) {
     getProfilePhoto(profile).then((image_url) => {
         document.getElementById("profile-photo-in-chat").src = image_url;
         modal.style.display = "block";
-    });
+    }).catch((error) => {console.log(error);});
 }
 
 function displayMessage(message) {
