@@ -140,34 +140,28 @@ a:hover {
     height: 5vh;
     margin-right: 5vw;
     z-index: 1000;
-    background-color: grey;
-    transition-duration: 200ms;
-}
-
-#chat-modal-btn {
-    width: 100%;
-    height: 5vh;
     background-color: lightgray;
-}
-
-#chat-modal-btn:hover {
-    opacity: 80%;
+    transition-duration: 200ms;
 }
 
 /* Style the button that is used to open and close the collapsible content */
 .chat-collapsible {
-    background-color: #eee;
     color: #444;
     cursor: pointer;
     width: 100%;
     border: none;
-    text-align: left;
     outline: none;
     font-size: 15px;
 }
-
-.chat-content {
-    height: 100%;
+.chat-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: lightgray;
+}
+.chat-header-container:hover {
+    background-color: #ccc;
+    opacity: 0.8;
 }
 
 .chat-content-inside {
@@ -337,24 +331,18 @@ a:hover {
     padding: 0.5vh;
 }
 
-.chat-header-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.chat-header-container:hover {
-    background-color: #ccc;
-}
+
 
 .chat-header-left {
     display: flex;
     align-items: center;
-    width: 15%;
-    background-color: lightgray
+    padding: 20px;
+    min-width: 85%;
+    justify-content: start;
 }
 .chat-header-right {
     display: flex;
-    width: 85%;
+    align-items: center;
 }
 
 .profile-photo-in-chat {
@@ -363,9 +351,7 @@ a:hover {
     background-size: cover;
     border-radius: 50%;
     display: inline-block;
-    background-color: #222222;
     opacity: 69%;
-    margin: auto;
 }
 
 .profile-image {
@@ -375,7 +361,6 @@ a:hover {
     background-size: cover;
     border-radius: 50%;
     display: inline-block;
-    background-color: #222222;
     opacity: 69%;
 }
 

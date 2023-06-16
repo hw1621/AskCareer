@@ -63,7 +63,7 @@
                 </div>
                 <div class="navbar-item dropdown">
                 <div class="dropbtn">
-                    <img src="" class="profile-photo-in-chat" id="profile-photo-in-navbar">
+                    <img src="" class="profile-photo-in-chat" id="profile-photo-in-navbar" alt="">
                     <script>
                         var myProfileId = "{{current_user.profile_id}}"
                         const backend_url = 'https://drp26backend.herokuapp.com/profiles/' + myProfileId;
@@ -132,16 +132,13 @@
 {% block javascripts %}{% endblock %}
 {% if current_user.is_authenticated %}
 <div id="chat-modal">
-    <div class="chat-header-container">
+    <div class="chat-header-container chat-collapsible" id="chat-modal-btn">
         <div class="chat-header-left" id="chat-header-left">
             <img src="" class="profile-photo-in-chat" id="profile-photo-in-chat" alt="">
             <span id="chat-name">Chat</span>
         </div>
         <div class="chat-header-right">
-            <div type="button" id="chat-modal-btn" class="chat-collapsible">
-                <span>&nbsp;</span>
-                <i class="bi bi-chevron-double-up" id="chat-modal-updown-symbol"></i>
-            </div>
+            <i class="bi bi-chevron-double-up" id="chat-modal-updown-symbol"></i>
         </div>
     </div>
         <div class="chat-content" id="chat-content">
