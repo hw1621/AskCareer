@@ -205,7 +205,7 @@ a:hover {
     border-radius: 10px;
     padding: 0.5vw;
     margin-top: 1vh;
-    width: 40%;
+    max-width: 70%;
     word-wrap: break-word;
 }
 .left-msg {
@@ -361,6 +361,10 @@ a:hover {
     margin: 20px;
     background-color: black;
 }
+.profile-photo-in-chat:hover {
+    opacity: 50%;
+}
+
 
 .profile-photo-in-nav {
     height: 30px;

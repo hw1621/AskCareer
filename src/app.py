@@ -77,8 +77,6 @@ def index():
         form = request.form.to_dict()
         try:
             assert "job-title" in form, "job-title not in form"
-            assert "job-company" in form, "company not in form"
-            assert "job-summary" in form, "job-description not in form"
         except AssertionError as e:
             return str(e), 500
         be_info = requests.get(
