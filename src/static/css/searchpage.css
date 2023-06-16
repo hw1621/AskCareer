@@ -12,7 +12,12 @@ form {
 }
 
 #job-title-row {
-    width: 60%;
+    max-width: 70%;
+}
+
+#job-title-row input {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 #job-description {
@@ -32,6 +37,7 @@ form {
 
 #form-submit {
     width: 25%;
+    min-width: 15ch;
 }
 
 .col-md {

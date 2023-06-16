@@ -186,9 +186,9 @@ def setting():
         return render_template("settings.html", settings=settings)
 
 
-# @app.route('/test')
-# def test_page():
-#     return render_template("profile.html")
+@app.route('/test')
+def test_page():
+    return render_template("searchpage.html")
 
 
 if __name__ == '__main__':

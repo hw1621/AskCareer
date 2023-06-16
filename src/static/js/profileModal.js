@@ -115,13 +115,13 @@ async function getProfilePhoto(profileId) {
         console.assert(response.ok, 'Response was not ok.')
         return response.json();
     }).then(function writeData(data) {
-        var image_url = data['profilePhotoString'];
+        let image_url = data['profilePhotoString'];
         return image_url;
     });
 }
 
 function loadImage(event) {
-    image = document.getElementById("edit-profile-image");
+    let image = document.getElementById("edit-profile-image");
     image.src = URL.createObjectURL(event.target.files[0]);
     image.onload = function() {
       URL.revokeObjectURL(image.src) // free memory

@@ -60,20 +60,21 @@ function loadChatOverview(data) {
         }
         let htmlCode =      "<div class=\"chat-overview-head\">\n" +
                                         "<div class=\"chat-overview-img-container\">\n" +
-                                            `<img class=\"chat-overview-img\" alt=\"\" src=\"${i["otherPersonImage"]}\"/>\n` +
+                                            `<img class="chat-overview-img" alt="" src="${i["otherPersonImage"]}"/>\n` +
                                         "</div>\n" +
                                         "<div class=\"chat-overview-text\">\n" +
-                                            `<div class=\"chat-overview-name\">${i["otherPersonName"]}</div>\n` +
-                                            `<div class=\"chat-overview-last-msg\">${message}</div>\n` +
+                                            `<div class="chat-overview-name">${i["otherPersonName"]}</div>\n` +
+                                            `<div class="chat-overview-last-msg">${message}</div>\n` +
                                         "</div>\n" +
                                     "</div>\n" +
                                     "<div class=\"chat-overview-notifications\">\n" +
-                                        `<div class=\"chat-overview-notification-badge\">${i["unread"]}</div>\n` +
+                                        `<div class="chat-overview-notification-badge">${i["unread"]}</div>\n` +
                                     "</div>\n"
         let newDiv = document.createElement("div");
         newDiv.classList.add("single-chat-overview");
         newDiv.onclick = function() {loadChat(i["otherPerson"])};
         newDiv.innerHTML = htmlCode;
+        newDiv.getElementsByClassName("chat-overview-notification-badge")[0].style.display = i["unread"] === 0 ? "none" : "block";
         chatOverview.insertBefore(newDiv, null);
     }
 }
