@@ -55,8 +55,8 @@ function loadChatOverview(data) {
     }
     for (const i of data["overview"]) {
         let message = i["last"]["content"];
-        if (message.length > 15) {
-            message = message.substring(0, 15) + "...";
+        if (message.length > 25) {
+            message = message.substring(0, 25) + "...";
         }
         let htmlCode =      "<div class=\"chat-overview-head\">\n" +
                                         "<div class=\"chat-overview-img-container\">\n" +
