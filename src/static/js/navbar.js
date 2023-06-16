@@ -79,14 +79,13 @@ function loadChatOverview(data) {
     }
 }
 
-let myProfileId = "{{current_user.profile_id}}"
+let myProfileId = metas.namedItem("user_profile_id").content;
 const backend_url = 'https://drp26backend.herokuapp.com/profiles/' + myProfileId;
 fetch(backend_url).then(function getJson(response) {
     console.assert(response.ok, 'Response was not ok.');
     return response.json();
-    }).then(function writeData(data) {
-    let image_url = data['profilePhotoString'];
-    return image_url;
+}).then(function writeData(data) {
+    return data['profilePhotoString'];
 }).then((image_url) => {
     document.getElementById("profile-photo-in-navbar").src = image_url;
 }).catch((error) => {console.log(error)});
