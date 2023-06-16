@@ -8,21 +8,21 @@
     <form method="post">
         <div class="row g-2" id="job-title-row">
           <div class="col-md">
-            <div class="form-floating">
+            <div class="form-floating" style="min-width: 35ch">
               <input id="job-title" name="job-title" required type="text" class="form-control" placeholder="Job title">
-              <label for="job-title">Enter your job title: </label>
+              <label for="job-title">Title of job you're applying to: </label>
             </div>
           </div>
           <div class="col-md">
-            <div class="form-floating">
-              <input id="company" name="job-company" required type="text" class="form-control" placeholder="Company">
-              <label for="job-company">Enter your job company: </label>
+            <div class="form-floating" style="min-width: 35ch">
+              <input id="company" name="job-company" type="text" class="form-control" placeholder="Company">
+              <label for="company">Company you're applying to: </label>
             </div>
           </div>
         </div>
         <div class="form-floating mb-3" id="job-description">
-            <textarea id="jd" name="job-summary" required class="form-control" placeholder="Please enter your job description." aria-label="With textarea"></textarea>
-            <label for="job-summary">Enter your job description: </label>
+            <textarea id="jd" name="job-summary" class="form-control" placeholder="Please enter your job description." aria-label="With textarea"></textarea>
+            <label for="job-summary">Description of job you're applying to: </label>
         </div>
         <div class="submit-row">
             <button id="form-submit" type="submit" name="form-submit" class="btn btn-primary">Get connected</button>
