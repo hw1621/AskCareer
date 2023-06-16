@@ -142,6 +142,8 @@ a:hover {
     z-index: 1000;
     background-color: lightgray;
     transition-duration: 200ms;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 /* Style the button that is used to open and close the collapsible content */
@@ -159,6 +161,8 @@ a:hover {
     justify-content: space-between;
     background-color: lightgray;
     height: 5vh;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 .chat-header-container:hover {
     background-color: #ccc;
