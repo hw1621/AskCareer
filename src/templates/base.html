@@ -63,19 +63,7 @@
                 </div>
                 <div class="navbar-item dropdown">
                 <div class="dropbtn">
-                    <img src="" class="profile-photo-in-chat" id="profile-photo-in-navbar" alt="">
-                    <script>
-                        var myProfileId = "{{current_user.profile_id}}"
-                        const backend_url = 'https://drp26backend.herokuapp.com/profiles/' + myProfileId;
-                        fetch(backend_url).then(function getJson(response) {
-                        console.assert(response.ok, 'Response was not ok.');
-                        return response.json();
-                        }).then(function writeData(data) {
-                        var image_url = data['profilePhotoString'];
-                        return image_url;
-                        }).then((image_url) => {
-                        document.getElementById("profile-photo-in-navbar").src = image_url;})
-                    </script>
+                    <img src="" class="profile-photo-in-nav" id="profile-photo-in-navbar" alt="">
                 </div>
                 <div class="dropdown-content">
 
@@ -141,22 +129,22 @@
             <i class="bi bi-chevron-double-up" id="chat-modal-updown-symbol"></i>
         </div>
     </div>
-        <div class="chat-content" id="chat-content">
-            <div class="chat-content-inside">
-                <div class="chat-message-div" id="chat-message-div">
+    <div class="chat-content" id="chat-content">
+        <div class="chat-content-inside">
+            <div class="chat-message-div" id="chat-message-div">
+            </div>
+            <div class="send-box">
+                <div style="width: 85%; display: flex; justify-content: center">
+                    <label style="width: 100%; margin: auto;"><input class="textarea" type="text" id="send-box-text"></label>
                 </div>
-                <div class="send-box">
-                    <div style="width: 85%; display: flex; justify-content: center">
-                        <label style="width: 100%; margin: auto;"><input class="textarea" type="text" id="send-box-text"></label>
-                    </div>
-                    <div>
-                        <button class="btn send-btn" onclick="sendMsg()"><i class="bi bi-send send-icon" ></i></button>
-                    </div>
+                <div>
+                    <button class="btn send-btn" onclick="sendMsg()"><i class="bi bi-send send-icon" ></i></button>
                 </div>
             </div>
         </div>
-        <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
     </div>
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</div>
 {% endif %}
 </body>
 </html>
